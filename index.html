@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM Stroy | Ремонт квартир под ключ в Астане</title>
+    <meta name="description" content="Готовые пакетные решения по ремонту квартир в Астане. Фиксированная цена, договор, гарантия. Пакеты «Стандарт» и «Комфорт +».">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1C3F60; /* Глубокий синий акцент для текста и кнопок */
+            --primary-hover: #142E46;
+            --accent: #5C95B2; /* Цвет, приближенный к синей линии на вашем логотипе */
+            --text-main: #2B2B2B;
+            --text-muted: #666666;
+            --bg-light: #F8F9FA;
+            --bg-white: #FFFFFF;
+            --header-bg: #050505; /* Глубокий черный для идеального слияния с логотипом */
+            --border-color: #E2E8F0;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-white);
+        }
+
+        body {
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Утилиты */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 36px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--bg-white);
+            box-shadow: 0 4px 15px rgba(28, 63, 96, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(28, 63, 96, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--bg-white);
+            border: 2px solid var(--bg-white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-white);
+            color: var(--header-bg);
+        }
+
+        /* Шапка (Header) - ТЕПЕРЬ ТЕМНАЯ */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--header-bg); /* Черный фон */
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            z-index: 1000;
+            padding: 10px 0;
+            transition: var(--transition);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 80px; 
+            width: auto;
+            display: block; /* Убирает лишний отступ снизу */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #E2E8F0; /* Светлый текст на черном фоне */
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .header-contacts {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone-link {
+            font-weight: 700;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .phone-link:hover {
+            color: var(--accent);
+        }
+
+        /* Первый экран (Hero) - ФОН КВАРТИРЫ */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            /* Используем фото современного интерьера квартиры в ЖК */
+            background: linear-gradient(to right, rgba(10, 15, 25, 0.9), rgba(10, 15, 25, 0.6)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            color: var(--bg-white);
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Остальные стили остались прежними для светлого чистого контента */
+        .stats {
+            background-color: var(--bg-white);
+            padding: 60px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            background-color: var(--bg-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .packages {
+            background-color: var(--bg-light);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .package-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .package-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .package-card.premium {
+            border: 2px solid var(--primary);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .package-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .package-price span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .package-desc {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .package-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .package-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .package-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .package-card .btn {
+            width: 100%;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .process-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .process-num {
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(28, 63, 96, 0.05);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            line-height: 1;
+        }
+
+        .process-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio {
+            background-color: var(--bg-light);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .case-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .case-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .case-img-wrap {
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .case-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .case-card:hover .case-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .case-info {
+            padding: 25px;
+        }
+
+        .case-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .case-tags {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: var(--bg-light);
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(92, 149, 178, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .feature-item h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .faq {
+            background-color: var(--bg-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            background: var(--bg-white);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+            list-style: none;
+            color: var(--primary);
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        details[open] summary::after {
+            content: '−';
+        }
+
+        .faq-content {
+            padding: 0 25px 25px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .cta-section {
+            background-color: var(--primary);
+            color: var(--bg-white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .cta-text {
+            flex: 1;
+        }
+
+        .cta-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--bg-white);
+        }
+
+        .cta-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta-form {
+            flex: 1;
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(92, 149, 178, 0.2);
+        }
+
+        select.form-control {
+            appearance: none;
+            background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 20px center;
+            background-size: 15px;
+        }
+
+        .cta-form .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #050505; /* Под цвет шапки и логотипа */
+            color: rgba(255,255,255,0.7);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 40px;
+        }
+
+        .footer-logo img {
+            max-height: 70px;
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            color: var(--bg-white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--bg-white);
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            .hero h1 { font-size: 2.8rem; }
+            .cta-container { flex-direction: column; }
+        }
+
+        @media (max-width: 768px) {
+            header .nav-links, .header-contacts .btn { display: none; }
+            .hero { text-align: center; justify-content: center; padding-top: 0; }
+            .hero-buttons { justify-content: center; flex-direction: column; }
+            .hero h1 { font-size: 2.2rem; }
+            
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; }
+            .process-grid, .portfolio-grid, .features-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-logo img { margin: 0 auto 20px; }
+            
+            section { padding: 60px 0; }
+            .package-card { padding: 30px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка - Теперь черная -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <a href="#"><img src="IMG_7947.jpg" alt="DM Stroy Logo" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#packages">Пакеты и цены</a></li>
+                <li><a href="#process">Как мы работаем</a></li>
+                <li><a href="#portfolio">Наши объекты</a></li>
+                <li><a href="#faq">Вопросы</a></li>
+            </ul>
+            <div class="header-contacts">
+                <a href="tel:+77086472742" class="phone-link">+7 708 647 27 42</a>
+                <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Оставить заявку</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Первый экран -->
+    <section class="hero">
+        <div class="container">
+            <h1>Идеальный ремонт квартир под ключ в Астане</h1>
+            <p>Готовые решения с фиксированной ценой от 105 000 ₸/м². Прозрачный состав работ, строгий договор, официальная гарантия и результат без вашего стресса.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Рассчитать стоимость</a>
+                <a href="#packages" class="btn btn-outline">Сравнить пакеты</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цифры доверия -->
+    <div class="stats container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-text">лет опыта на рынке</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-text">довольных клиентов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-text">фиксированная смета</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1 год</div>
+                <div class="stat-text">гарантия по договору</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Пакеты ремонта -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <h2 class="section-title">Выберите ваш пакет ремонта</h2>
+            <p class="section-subtitle">Всё необходимое уже включено. Вы выбираете пакет, мы берем на себя черновые и чистовые работы, закупку материалов и контроль.</p>
+            
+            <div class="packages-grid">
+                <!-- Пакет Стандарт -->
+                <div class="package-card">
+                    <h3 class="package-name">Стандарт</h3>
+                    <div class="package-price">105.000 ₸ <span>/ м²</span></div>
+                    <p class="package-desc">Оптимальное решение для быстрой и качественной чистовой отделки. Надежные материалы и базовый комфорт.</p>
+                    
+                    <ul class="package-list">
+                        <li>Гипсовая штукатурка под правило</li>
+                        <li>Наливной пол</li>
+                        <li>Черновая сантехника (ПВХ Jakko)</li>
+                        <li>Черновой электромонтаж под 90° (медный кабель ГОСТ, автоматы Schneider)</li>
+                        <li>Керамогранит 120/60 и 60/60 с запилом углов под 45° (матовый/глянец на выбор)</li>
+                        <li>Розетки и выключатели (Aura, черные/белые)</li>
+                        <li>Инсталляция Grohe, смесители Trigor 3в1, тумба с раковиной 60x45</li>
+                        <li>Ванна 170x70 или душевой трап, зеркало, вытяжной вентилятор</li>
+                        <li>Обои флизелиновые (моющиеся на выбор)</li>
+                        <li>Двери 2м классические белые (магнитная фурнитура)</li>
+                        <li>Ламинат 32 класс 8мм (Kastamonu)</li>
+                        <li>Плинтус напольный полиуретан 80мм (белый)</li>
+                        <li>Подоконники/откосы пластиковые</li>
+                        <li>Натяжной матовый потолок + софиты</li>
+                        <li>Черная/белая вставка или галтели</li>
+                        <li><strong>Подарок:</strong> ТВ-зона из декор-панелей (2 бамбук панели + 4 лувера)</li>
+                        <li><strong>Подарок:</strong> Дизайн-проект + Теплый пол (2 точки)</li>
+                        <li>Проф. клининг после ремонта</li>
+                        <li>Удобная 3х этапная оплата 40/40/20</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Выбрать «Стандарт»</a>
+                </div>
+
+                <!-- Пакет Комфорт + -->
+                <div class="package-card premium">
+                    <div class="package-badge">Хит продаж</div>
+                    <h3 class="package-name">Комфорт +</h3>
+                    <div class="package-price">130.000 ₸ <span>/ м²</span></div>
+                    <p class="package-desc">Улучшенные материалы, трендовые интерьерные решения и расширенный комфорт для вашей квартиры.</p>
+                    
+                    <ul class="package-list">
+                        <li>Техпроект помещения</li>
+                        <li>Выравнивание стен под правило, перенос мокрой зоны</li>
+                        <li>Электромонтажные работы (медная проводка)</li>
+                        <li>Сантехнические работы (черновые + чистовые)</li>
+                        <li>Керамогранит 120x60 с запилом под 45° (в т.ч. на фартук)</li>
+                        <li>Подвесной унитаз + Инсталляция Grohe</li>
+                        <li>Ванна акриловая 170x70 либо душевое ограждение с поддоном</li>
+                        <li>Зеркало с подсветкой 60-80 см, тумба с раковиной</li>
+                        <li>Смесители Frap (ванна, раковина, гиг. душ)</li>
+                        <li>Обои флизелиновые</li>
+                        <li>Двери высотой 2.2 метра</li>
+                        <li>Ламинат 33 класса с фаской (подложка включена)</li>
+                        <li>Плинтус полиуретан 10 см</li>
+                        <li>Потолок натяжной, софиты, магнитные треки до 4 п.м.</li>
+                        <li>Монтаж кондиционера (1 точка)</li>
+                        <li>Тёплый пол (2 точки)</li>
+                        <li>Мастер-выключатель, розетки/выключатели Aura, Volcon</li>
+                        <li>Профессиональный клининг</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Выбрать «Комфорт +»</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают DM Stroy</h2>
+            <p class="section-subtitle">Мы разрушаем стереотипы о том, что ремонт — это долго, дорого и нервно.</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">₸</div>
+                    <h4>Честная цена</h4>
+                    <p>Стоимость фиксируется в договоре и не меняется в процессе работы.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⏱</div>
+                    <h4>Точные сроки</h4>
+                    <p>Прописываем график работ. Сдаем объекты вовремя или платим неустойку.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛡</div>
+                    <h4>Гарантия 1 год</h4>
+                    <p>Уверены в качестве материалов и работы мастеров. Официальный договор.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🧹</div>
+                    <h4>Заезжай и живи</h4>
+                    <p>Выполняем проф. клининг перед сдачей. Вам останется только завезти мебель.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как мы работаем -->
+    <section id="process" class="packages">
+        <div class="container">
+            <h2 class="section-title">Процесс без вашего участия</h2>
+            <p class="section-subtitle">Понятные шаги от первого звонка до получения ключей от готовой квартиры.</p>
+            
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-num">01</div>
+                    <h3>Заявка и замер</h3>
+                    <p>Вы оставляете заявку. Наш инженер бесплатно приезжает на объект, проводит точные замеры и консультирует.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-num">02</div>
+                    <h3>Выбор пакета</h3>
+                    <p>Подбираем оптимальный пакет под ваши задачи, рассчитываем финальную смету до тенге.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-num">03</div>
+                    <h3>Договор</h3>
+                    <p>Подписываем официальный договор с указанием сроков, гарантий и фиксированной стоимости.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-num">04</div>
+                    <h3>Закупка материалов</h3>
+                    <p>Самостоятельно закупаем и доставляем все черновые и чистовые материалы на объект.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-num">05</div>
+                    <h3>Выполнение работ</h3>
+                    <p>Проводим ремонт согласно тех. регламентам. Регулярно отправляем вам фото/видео отчеты.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-num">06</div>
+                    <h3>Сдача и клининг</h3>
+                    <p>Убираем строительную пыль, моем окна и сдаем вам идеально чистую, готовую к проживанию квартиру.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Реализованные объекты</h2>
+            <p class="section-subtitle">Посмотрите на результаты нашей работы в новостройках Астаны.</p>
+            
+            <div class="portfolio-grid">
+                <!-- Кейс 1 -->
+                <div class="case-card">
+                    <div class="case-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ремонт ЖК Астана">
+                    </div>
+                    <div class="case-info">
+                        <h3>ЖК "Nova City"</h3>
+                        <div class="case-tags">
+                            <span class="tag">65 м²</span>
+                            <span class="tag">Комфорт +</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666;">Реализован проект с магнитными треками, дверями 2.2м и теневым профилем.</p>
+                    </div>
+                </div>
+                <!-- Кейс 2 -->
+                <div class="case-card">
+                    <div class="case-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ремонт ванной Астана">
+                    </div>
+                    <div class="case-info">
+                        <h3>ЖК "Коркем Tower"</h3>
+                        <div class="case-tags">
+                            <span class="tag">42 м²</span>
+                            <span class="tag">Стандарт</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666;">Светлый минималистичный ремонт. Установлена подарочная ТВ-зона.</p>
+                    </div>
+                </div>
+                <!-- Кейс 3 -->
+                <div class="case-card">
+                    <div class="case-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ремонт спальни Астана">
+                    </div>
+                    <div class="case-info">
+                        <h3>ЖК "Манхэттен"</h3>
+                        <div class="case-tags">
+                            <span class="tag">85 м²</span>
+                            <span class="tag">Комфорт +</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666;">Комплексная перепланировка, перенос мокрой зоны, керамогранит 120х60.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://instagram.com/dm_stroy_" target="_blank" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);">Смотреть больше в Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="section-title">Частые вопросы</h2>
+            <br><br>
+            
+            <details>
+                <summary>Можно ли вносить изменения в пакеты?</summary>
+                <div class="faq-content">
+                    Да, наши пакеты гибкие. Если вы хотите добавить дополнительную розетку, заменить обои на покраску или выбрать другую ванну — мы сделаем перерасчет индивидуально для вас.
+                </div>
+            </details>
+            
+            <details>
+                <summary>Как происходит оплата?</summary>
+                <div class="faq-content">
+                    Мы работаем по удобной трехэтапной системе: 40% / 40% / 20%. Первая часть оплачивается при подписании договора и закупке черновых материалов, вторая — после завершения черновых работ, и остаток — после сдачи чистового ремонта.
+                </div>
+            </details>
+
+            <details>
+                <summary>Кто закупает материалы?</summary>
+                <div class="faq-content">
+                    Мы берем на себя 100% комплектацию объекта. Закупку, доставку, разгрузку и подъем черновых и чистовых материалов мы осуществляем сами. Вы только утверждаете цвета и фактуры (плитка, ламинат, обои) по нашим каталогам.
+                </div>
+            </details>
+
+            <details>
+                <summary>Вы даете гарантию на работы?</summary>
+                <div class="faq-content">
+                    Да, по договору мы предоставляем гарантию 1 год на все виды выполненных монтажных и отделочных работ. Если в течение этого времени выявится недочет по нашей вине — мы устраним его бесплатно.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- Форма заявки -->
+    <section id="contact" class="cta-section">
+        <div class="container cta-container">
+            <div class="cta-text">
+                <h2>Готовы начать ремонт?</h2>
+                <p>Оставьте заявку прямо сейчас. Наш менеджер свяжется с вами, ответит на все вопросы и организует бесплатный выезд инженера для замера вашей квартиры.</p>
+                <ul style="list-style: none; opacity: 0.9; margin-bottom: 20px;">
+                    <li style="margin-bottom: 10px;">✓ Бесплатный замер</li>
+                    <li style="margin-bottom: 10px;">✓ Точный расчет сметы</li>
+                    <li style="margin-bottom: 10px;">✓ Консультация по материалам</li>
+                </ul>
+            </div>
+            
+            <div class="cta-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Номер телефона" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Название ЖК (необязательно)">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="" disabled selected>Интересующий пакет</option>
+                            <option value="standart">Пакет «Стандарт» (105.000 ₸/м²)</option>
+                            <option value="comfort">Пакет «Комфорт +» (130.000 ₸/м²)</option>
+                            <option value="dont_know">Пока не знаю, нужна консультация</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Получить расчет стоимости</button>
+                    <p style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 15px;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <img src="IMG_7947.jpg" alt="DM Stroy Logo" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'">
+                    </div>
+                    <p style="max-width: 300px; font-size: 0.9rem;">Профессиональный ремонт квартир под ключ в Астане. Берем все заботы на себя, от замера до финального клининга.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#packages">Пакеты</a></li>
+                        <li><a href="#process">Этапы работы</a></li>
+                        <li><a href="#portfolio">Объекты</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Контакты</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+77086472742">📞 +7 708 647 27 42</a></li>
+                        <li><a href="#">📍 г. Астана</a></li>
+                        <li><a href="https://instagram.com/dm_stroy_" target="_blank">📷 @dm_stroy_</a></li>
+                        <li><a href="https://wa.me/77086472742" target="_blank">💬 WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 DM Stroy. Все права защищены. Разработано для строительной компании.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
