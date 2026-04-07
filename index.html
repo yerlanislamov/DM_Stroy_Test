@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DM Stroy | Ремонт квартир под ключ в Астане</title>
-    <meta name="description" content="Готовые пакетные решения по ремонту квартир в Астане. Фиксированная цена, договор, гарантия. Пакеты «Стандарт» и «Комфорт +».">
+    <!-- SEO: базовые метаданные для тестовой индексации и сниппета -->
+    <title>Ремонт квартир под ключ в Астане, цены | DM Stroy</title>
+    <meta name="description" content="Ремонт квартир под ключ в Астане с фиксированной ценой. Пакеты от 105 000 ₸/м², договор и гарантия. Оставьте заявку на расчет.">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- SEO: Open Graph для корректного шаринга; в production замените og:image на абсолютный URL -->
+    <meta property="og:title" content="Ремонт квартир под ключ в Астане, цены | DM Stroy">
+    <meta property="og:description" content="Ремонт квартир под ключ в Астане с фиксированной ценой. Пакеты от 105 000 ₸/м², договор и гарантия. Оставьте заявку на расчет.">
+    <meta property="og:image" content="IMG_7947.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_KZ">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --primary: #1C3F60; /* Глубокий синий акцент для текста и кнопок */
             --primary-hover: #142E46;
             --accent: #5C95B2; /* Цвет, приближенный к синей линии на вашем логотипе */
+            --premium-accent: #C78B3B;
+            --premium-accent-soft: rgba(199, 139, 59, 0.12);
             --text-main: #2B2B2B;
             --text-muted: #666666;
             --bg-light: #F8F9FA;
@@ -30,6 +41,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 110px;
             font-family: 'Montserrat', sans-serif;
             color: var(--text-main);
             background-color: var(--bg-white);
@@ -38,6 +50,18 @@
         body {
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* Утилиты */
@@ -80,18 +104,23 @@
             cursor: pointer;
             transition: var(--transition);
             border: none;
+            transform: translateY(0);
         }
 
         .btn-primary {
             background-color: var(--primary);
             color: var(--bg-white);
-            box-shadow: 0 4px 15px rgba(28, 63, 96, 0.3);
+            box-shadow: 0 8px 20px rgba(28, 63, 96, 0.18);
         }
 
         .btn-primary:hover {
             background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(28, 63, 96, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px rgba(20, 46, 70, 0.28);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
         .btn-outline {
@@ -103,6 +132,12 @@
         .btn-outline:hover {
             background-color: var(--bg-white);
             color: var(--header-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 24px rgba(255, 255, 255, 0.14);
+        }
+
+        .btn-outline:active {
+            transform: translateY(0);
         }
 
         /* Шапка (Header) - ТЕПЕРЬ ТЕМНАЯ */
@@ -173,6 +208,7 @@
             align-items: center;
             /* Используем фото современного интерьера квартиры в ЖК */
             background: linear-gradient(to right, rgba(10, 15, 25, 0.9), rgba(10, 15, 25, 0.6)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            background-attachment: fixed;
             color: var(--bg-white);
             padding-top: 80px;
         }
@@ -218,6 +254,11 @@
 
         .stat-item {
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px);
         }
 
         .stat-number {
@@ -225,6 +266,7 @@
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 5px;
+            font-variant-numeric: tabular-nums;
         }
 
         .stat-text {
@@ -241,6 +283,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
+            align-items: stretch;
         }
 
         .package-card {
@@ -248,31 +291,38 @@
             border-radius: 20px;
             padding: 50px 40px;
             box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             position: relative;
             border: 1px solid var(--border-color);
+            transform-origin: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .package-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-5px);
+            box-shadow: 0 20px 32px rgba(0,0,0,0.12);
+            transform: translateY(-6px) scale(1.015);
+            border-color: var(--accent);
         }
 
         .package-card.premium {
-            border: 2px solid var(--primary);
+            border: 2px solid var(--premium-accent);
+            background: linear-gradient(180deg, rgba(199, 139, 59, 0.06) 0%, rgba(255, 255, 255, 1) 22%);
         }
 
         .package-badge {
             position: absolute;
             top: -15px;
             right: 30px;
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--premium-accent), #e2b56d);
             color: white;
             padding: 8px 20px;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
         .package-name {
@@ -301,30 +351,205 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .package-list {
-            list-style: none;
-            margin-bottom: 40px;
+        .package-sections {
+            display: grid;
+            gap: 18px;
+            flex: 1;
         }
 
-        .package-list li {
-            position: relative;
-            padding-left: 30px;
+        .package-section {
+            padding: 20px;
+            border: 1px solid rgba(28, 63, 96, 0.08);
+            border-radius: 16px;
+            background: rgba(248, 249, 250, 0.95);
+        }
+
+        .package-card.premium .package-section {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(199, 139, 59, 0.18);
+        }
+
+        .package-section-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 12px;
+        }
+
+        .package-section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(92, 149, 178, 0.14);
+            color: var(--primary);
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        .package-card.premium .package-section-icon {
+            background: var(--premium-accent-soft);
+            color: var(--premium-accent);
+        }
+
+        .package-section-title {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .package-section-list {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .package-section-list li {
+            position: relative;
+            padding-left: 22px;
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        .package-list li::before {
-            content: '✓';
+        .package-section-list li::before {
+            content: '';
             position: absolute;
             left: 0;
-            top: 0;
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
+            top: 0.7em;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            transform: translateY(-50%);
+        }
+
+        .package-card.premium .package-section-list li::before {
+            background: var(--premium-accent);
+        }
+
+        .package-note {
+            margin-top: 26px;
+            padding: 14px 16px;
+            background: rgba(92, 149, 178, 0.08);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .package-card.premium .package-note {
+            background: var(--premium-accent-soft);
+            border-left-color: var(--premium-accent);
+        }
+
+        .package-cta {
+            margin-top: 28px;
         }
 
         .package-card .btn {
             width: 100%;
+        }
+
+        .upgrade-comparison {
+            margin-top: 56px;
+            padding: 38px;
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(28, 63, 96, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%);
+            border: 1px solid rgba(28, 63, 96, 0.08);
+        }
+
+        .upgrade-header {
+            text-align: center;
+            margin-bottom: 34px;
+        }
+
+        .upgrade-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .upgrade-subtitle {
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .upgrade-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .upgrade-card {
+            background: var(--bg-white);
+            border: 1px solid rgba(28, 63, 96, 0.08);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .upgrade-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .upgrade-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .upgrade-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: rgba(92, 149, 178, 0.14);
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .upgrade-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .upgrade-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 12px;
+            align-items: start;
+            padding: 10px 0;
+            border-top: 1px solid rgba(28, 63, 96, 0.08);
+        }
+
+        .upgrade-row:first-of-type {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .upgrade-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .upgrade-value {
+            color: var(--text-main);
+            font-size: 0.96rem;
+        }
+
+        .upgrade-value strong {
+            color: var(--premium-accent);
         }
 
         .process-grid {
@@ -338,6 +563,12 @@
             padding: 30px;
             border-radius: 16px;
             position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
         }
 
         .process-num {
@@ -380,11 +611,14 @@
             overflow: hidden;
             background: var(--bg-white);
             box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid transparent;
         }
 
         .case-card:hover {
-            box-shadow: var(--shadow-md);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 22px 34px rgba(0,0,0,0.12);
+            border-color: rgba(92, 149, 178, 0.45);
         }
 
         .case-img-wrap {
@@ -436,6 +670,13 @@
         .feature-item {
             text-align: center;
             padding: 30px 20px;
+            border-radius: 16px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-6px);
+            background-color: rgba(92, 149, 178, 0.05);
         }
 
         .feature-icon {
@@ -452,7 +693,7 @@
             font-weight: bold;
         }
 
-        .feature-item h4 {
+        .feature-item h3 {
             margin-bottom: 10px;
             color: var(--primary);
         }
@@ -474,6 +715,12 @@
             border-radius: 10px;
             box-shadow: var(--shadow-sm);
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        details:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
 
         summary {
@@ -548,6 +795,12 @@
             padding: 40px;
             border-radius: 16px;
             box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-form:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 36px rgba(0,0,0,0.16);
         }
 
         .form-group {
@@ -630,6 +883,21 @@
             font-size: 0.9rem;
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .hero {
+                background-attachment: scroll;
+            }
+        }
+
         /* Адаптивность */
         @media (max-width: 1024px) {
             .packages-grid {
@@ -637,6 +905,10 @@
                 max-width: 700px;
                 margin: 0 auto;
             }
+            .upgrade-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero { background-attachment: scroll; }
             .hero h1 { font-size: 2.8rem; }
             .cta-container { flex-direction: column; }
         }
@@ -649,11 +921,15 @@
             
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; }
             .process-grid, .portfolio-grid, .features-grid { grid-template-columns: 1fr; }
+            .upgrade-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .footer-logo img { margin: 0 auto 20px; }
             
             section { padding: 60px 0; }
             .package-card { padding: 30px 20px; }
+            .upgrade-comparison { padding: 24px 18px; }
+            .upgrade-title { font-size: 1.7rem; }
+            .upgrade-row { grid-template-columns: 1fr; gap: 6px; }
         }
 
         @media (max-width: 480px) {
@@ -667,14 +943,16 @@
     <header>
         <div class="container header-inner">
             <div class="logo">
-                <a href="#"><img src="IMG_7947.jpg" alt="DM Stroy Logo" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'"></a>
+                <a href="#"><img src="IMG_7947.jpg" alt="Логотип DM Stroy - ремонт квартир под ключ в Астане" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'"></a>
             </div>
-            <ul class="nav-links">
-                <li><a href="#packages">Пакеты и цены</a></li>
-                <li><a href="#process">Как мы работаем</a></li>
-                <li><a href="#portfolio">Наши объекты</a></li>
-                <li><a href="#faq">Вопросы</a></li>
-            </ul>
+            <nav aria-label="Основная навигация">
+                <ul class="nav-links">
+                    <li><a href="#packages">Пакеты и цены</a></li>
+                    <li><a href="#process">Как мы работаем</a></li>
+                    <li><a href="#portfolio">Наши объекты</a></li>
+                    <li><a href="#faq">Вопросы</a></li>
+                </ul>
+            </nav>
             <div class="header-contacts">
                 <a href="tel:+77086472742" class="phone-link">+7 708 647 27 42</a>
                 <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Оставить заявку</a>
@@ -682,340 +960,497 @@
         </div>
     </header>
 
-    <!-- Первый экран -->
-    <section class="hero">
-        <div class="container">
-            <h1>Идеальный ремонт квартир под ключ в Астане</h1>
-            <p>Готовые решения с фиксированной ценой от 105 000 ₸/м². Прозрачный состав работ, строгий договор, официальная гарантия и результат без вашего стресса.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Рассчитать стоимость</a>
-                <a href="#packages" class="btn btn-outline">Сравнить пакеты</a>
+    <main>
+        <!-- Первый экран -->
+        <section class="hero">
+            <div class="container" data-aos="fade-up">
+                <h1 data-aos="fade-up" data-aos-delay="50">Идеальный ремонт квартир под ключ в Астане</h1>
+                <p data-aos="fade-up" data-aos-delay="150">Готовые решения с фиксированной ценой от 105 000 ₸/м². Прозрачный состав работ, строгий договор, официальная гарантия и результат без вашего стресса.</p>
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="250">
+                    <a href="#contact" class="btn btn-primary">Рассчитать стоимость</a>
+                    <a href="#packages" class="btn btn-outline">Сравнить пакеты</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Цифры доверия -->
-    <div class="stats container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">5</div>
-                <div class="stat-text">лет опыта на рынке</div>
+        <!-- SEO/семантика: блок статистики оформлен как самостоятельная section -->
+        <section class="stats" aria-labelledby="stats-title">
+            <div class="container">
+                <h2 id="stats-title" class="visually-hidden">Преимущества компании в цифрах</h2>
+                <div class="stats-grid">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="50">
+                        <div class="stat-number" data-counter-target="5" data-counter-suffix="">0</div>
+                        <div class="stat-text">лет опыта на рынке</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="150">
+                        <div class="stat-number" data-counter-target="1000" data-counter-suffix="+">0</div>
+                        <div class="stat-text">довольных клиентов</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="250">
+                        <div class="stat-number" data-counter-target="100" data-counter-suffix="%">0</div>
+                        <div class="stat-text">фиксированная смета</div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="350">
+                        <div class="stat-number" data-counter-target="1" data-counter-suffix="">0</div>
+                        <div class="stat-text">гарантия по договору</div>
+                    </div>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">1000+</div>
-                <div class="stat-text">довольных клиентов</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-text">фиксированная смета</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">1 год</div>
-                <div class="stat-text">гарантия по договору</div>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Пакеты ремонта -->
-    <section id="packages" class="packages">
-        <div class="container">
-            <h2 class="section-title">Выберите ваш пакет ремонта</h2>
-            <p class="section-subtitle">Всё необходимое уже включено. Вы выбираете пакет, мы берем на себя черновые и чистовые работы, закупку материалов и контроль.</p>
-            
-            <div class="packages-grid">
-                <!-- Пакет Стандарт -->
-                <div class="package-card">
-                    <h3 class="package-name">Стандарт</h3>
-                    <div class="package-price">105.000 ₸ <span>/ м²</span></div>
-                    <p class="package-desc">Оптимальное решение для быстрой и качественной чистовой отделки. Надежные материалы и базовый комфорт.</p>
-                    
-                    <ul class="package-list">
-                        <li>Гипсовая штукатурка под правило</li>
-                        <li>Наливной пол</li>
-                        <li>Черновая сантехника (ПВХ Jakko)</li>
-                        <li>Черновой электромонтаж под 90° (медный кабель ГОСТ, автоматы Schneider)</li>
-                        <li>Керамогранит 120/60 и 60/60 с запилом углов под 45° (матовый/глянец на выбор)</li>
-                        <li>Розетки и выключатели (Aura, черные/белые)</li>
-                        <li>Инсталляция Grohe, смесители Trigor 3в1, тумба с раковиной 60x45</li>
-                        <li>Ванна 170x70 или душевой трап, зеркало, вытяжной вентилятор</li>
-                        <li>Обои флизелиновые (моющиеся на выбор)</li>
-                        <li>Двери 2м классические белые (магнитная фурнитура)</li>
-                        <li>Ламинат 32 класс 8мм (Kastamonu)</li>
-                        <li>Плинтус напольный полиуретан 80мм (белый)</li>
-                        <li>Подоконники/откосы пластиковые</li>
-                        <li>Натяжной матовый потолок + софиты</li>
-                        <li>Черная/белая вставка или галтели</li>
-                        <li><strong>Подарок:</strong> ТВ-зона из декор-панелей (2 бамбук панели + 4 лувера)</li>
-                        <li><strong>Подарок:</strong> Дизайн-проект + Теплый пол (2 точки)</li>
-                        <li>Проф. клининг после ремонта</li>
-                        <li>Удобная 3х этапная оплата 40/40/20</li>
+        <!-- Пакеты ремонта -->
+        <section id="packages" class="packages" aria-labelledby="packages-title">
+            <div class="container">
+                <h2 id="packages-title" class="section-title" data-aos="fade-up">Выберите ваш пакет ремонта</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Всё необходимое уже включено. Вы выбираете пакет, мы берем на себя черновые и чистовые работы, закупку материалов и контроль.</p>
+                
+                <div class="packages-grid">
+                    <article class="package-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="package-name">Стандарт</h3>
+                        <div class="package-price">105.000 ₸ <span>/ м²</span></div>
+                        <p class="package-desc">Оптимальное решение для качественной чистовой отделки. Надежные материалы и базовый комфорт.</p>
+
+                        <div class="package-sections">
+                            <section class="package-section">
+                                <div class="package-section-heading">
+                                    <span class="package-section-icon" aria-hidden="true">🛠</span>
+                                    <h4 class="package-section-title">Подготовка</h4>
+                                </div>
+                                <ul class="package-section-list">
+                                    <li>Выравнивание стен (гипсовая штукатурка)</li>
+                                    <li>Наливной пол</li>
+                                    <li>Черновая сантехника (ПВХ Jakko)</li>
+                                    <li>Электромонтаж (кабель ГОСТ, автоматы Schneider)</li>
+                                </ul>
+                            </section>
+
+                            <section class="package-section">
+                                <div class="package-section-heading">
+                                    <span class="package-section-icon" aria-hidden="true">🚪</span>
+                                    <h4 class="package-section-title">Чистовая отделка</h4>
+                                </div>
+                                <ul class="package-section-list">
+                                    <li>Обои флизелиновые</li>
+                                    <li>Ламинат 32 класс (8 мм)</li>
+                                    <li>Плинтус 80 мм</li>
+                                    <li>Двери белые (2.0 м) с магнитной фурнитурой</li>
+                                    <li>Натяжной потолок</li>
+                                </ul>
+                            </section>
+
+                            <section class="package-section">
+                                <div class="package-section-heading">
+                                    <span class="package-section-icon" aria-hidden="true">🚿</span>
+                                    <h4 class="package-section-title">Санузел</h4>
+                                </div>
+                                <ul class="package-section-list">
+                                    <li>Керамогранит 120х60 / 60х60 (запил 45°)</li>
+                                    <li>Инсталляция Grohe</li>
+                                    <li>Смесители Trigor 3в1</li>
+                                    <li>Ванна 170х70 или трап</li>
+                                </ul>
+                            </section>
+
+                            <section class="package-section">
+                                <div class="package-section-heading">
+                                    <span class="package-section-icon" aria-hidden="true">🎁</span>
+                                    <h4 class="package-section-title">Подарки и бонусы</h4>
+                                </div>
+                                <ul class="package-section-list">
+                                    <li>Дизайн-проект + Теплый пол (2 точки)</li>
+                                    <li>ТВ-зона из декор-панелей</li>
+                                    <li>Профессиональный клининг</li>
+                                </ul>
+                            </section>
+                        </div>
+
+                        <div class="package-note">Надежная база для тех, кто хочет получить аккуратный и понятный ремонт без переплаты за дополнительные опции.</div>
+                        <div class="package-cta">
+                            <a href="#contact" class="btn btn-primary">Выбрать «Стандарт»</a>
+                        </div>
+                    </article>
+
+                    <article class="package-card premium" data-aos="fade-up" data-aos-delay="220">
+                        <div class="package-badge">Top Value</div>
+                        <h3 class="package-name">Комфорт +</h3>
+                        <div class="package-price">130.000 ₸ <span>/ м²</span></div>
+                        <p class="package-desc">Улучшенные материалы, трендовые решения и расширенный функционал для вашего удобства.</p>
+
+                        <div class="package-sections">
+                            <section class="package-section">
+                                <div class="package-section-heading">
+                                    <span class="package-section-icon" aria-hidden="true">🛠</span>
+                                    <h4 class="package-section-title">Подготовка</h4>
+                                </div>
+                                <ul class="package-section-list">
+                                    <li><strong>Техпроект помещения</strong></li>
+                                    <li><strong>Перенос мокрой зоны</strong></li>
+                                    <li><strong>Полный цикл инженерии</strong></li>
+                                    <li><strong>Мастер-выключатель</strong> (весь свет одной кнопкой)</li>
+                                </ul>
+                            </section>
+
+                            <section class="package-section">
+                                <div class="package-section-heading">
+                                    <span class="package-section-icon" aria-hidden="true">🚪</span>
+                                    <h4 class="package-section-title">Чистовая отделка</h4>
+                                </div>
+                                <ul class="package-section-list">
+                                    <li><strong>Премиум обои</strong></li>
+                                    <li><strong>Ламинат 33 класс с фаской</strong></li>
+                                    <li>Плинтус 100 мм</li>
+                                    <li><strong>Высокие двери (2.2 м)</strong></li>
+                                    <li>Потолок с <strong>магнитными треками</strong> (до 4 м)</li>
+                                </ul>
+                            </section>
+
+                            <section class="package-section">
+                                <div class="package-section-heading">
+                                    <span class="package-section-icon" aria-hidden="true">🚿</span>
+                                    <h4 class="package-section-title">Санузел</h4>
+                                </div>
+                                <ul class="package-section-list">
+                                    <li>Керамогранит <strong>+ фартук кухни</strong></li>
+                                    <li><strong>Подвесной унитаз</strong></li>
+                                    <li>Инсталляция Grohe</li>
+                                    <li>Смесители Frap</li>
+                                    <li><strong>Зеркало с LED-подсветкой</strong></li>
+                                </ul>
+                            </section>
+
+                            <section class="package-section">
+                                <div class="package-section-heading">
+                                    <span class="package-section-icon" aria-hidden="true">🎁</span>
+                                    <h4 class="package-section-title">Подарки и бонусы</h4>
+                                </div>
+                                <ul class="package-section-list">
+                                    <li><strong>Все подарки пакета «Стандарт» включены</strong></li>
+                                    <li>Монтаж кондиционера (1 точка)</li>
+                                    <li>Профессиональный клининг</li>
+                                </ul>
+                            </section>
+                        </div>
+
+                        <div class="package-note">Пакет для тех, кто хочет не только красивую отделку, но и более высокий статус, современную инженерию и удобство в повседневной жизни.</div>
+                        <div class="package-cta">
+                            <a href="#contact" class="btn btn-primary">Выбрать «Комфорт +»</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="upgrade-comparison" data-aos="fade-up" data-aos-delay="140">
+                    <div class="upgrade-header">
+                        <h3 class="upgrade-title">Почему выбирают Комфорт +</h3>
+                        <p class="upgrade-subtitle">Разница не только в материалах. Пакет «Комфорт +» заметно повышает статус интерьера, удобство в быту и уровень технической проработки.</p>
+                    </div>
+
+                    <div class="upgrade-grid">
+                        <article class="upgrade-card" data-aos="fade-up" data-aos-delay="160">
+                            <div class="upgrade-card-header">
+                                <span class="upgrade-card-icon" aria-hidden="true">📐</span>
+                                <h3>Статус интерьера</h3>
+                            </div>
+                            <div class="upgrade-row">
+                                <div class="upgrade-label">Стандарт</div>
+                                <div class="upgrade-value">Белые двери <strong>2.0 м</strong> для аккуратной классической базы.</div>
+                            </div>
+                            <div class="upgrade-row">
+                                <div class="upgrade-label">Комфорт +</div>
+                                <div class="upgrade-value">Высокие двери <strong>2.2 м</strong>, которые визуально поднимают потолок и делают интерьер дороже.</div>
+                            </div>
+                        </article>
+
+                        <article class="upgrade-card" data-aos="fade-up" data-aos-delay="220">
+                            <div class="upgrade-card-header">
+                                <span class="upgrade-card-icon" aria-hidden="true">💡</span>
+                                <h3>Технология и сценарии</h3>
+                            </div>
+                            <div class="upgrade-row">
+                                <div class="upgrade-label">Стандарт</div>
+                                <div class="upgrade-value">Обычное ручное управление светом по зонам.</div>
+                            </div>
+                            <div class="upgrade-row">
+                                <div class="upgrade-label">Комфорт +</div>
+                                <div class="upgrade-value"><strong>Мастер-выключатель</strong> позволяет выключать весь свет одной кнопкой перед выходом.</div>
+                            </div>
+                        </article>
+
+                        <article class="upgrade-card" data-aos="fade-up" data-aos-delay="280">
+                            <div class="upgrade-card-header">
+                                <span class="upgrade-card-icon" aria-hidden="true">✨</span>
+                                <h3>Современный визуал</h3>
+                            </div>
+                            <div class="upgrade-row">
+                                <div class="upgrade-label">Стандарт</div>
+                                <div class="upgrade-value">Натяжной потолок со стандартными световыми решениями.</div>
+                            </div>
+                            <div class="upgrade-row">
+                                <div class="upgrade-label">Комфорт +</div>
+                                <div class="upgrade-value"><strong>Магнитные треки</strong> создают более современный и гибкий сценарий освещения.</div>
+                            </div>
+                        </article>
+
+                        <article class="upgrade-card" data-aos="fade-up" data-aos-delay="340">
+                            <div class="upgrade-card-header">
+                                <span class="upgrade-card-icon" aria-hidden="true">🧾</span>
+                                <h3>Контроль и безопасность</h3>
+                            </div>
+                            <div class="upgrade-row">
+                                <div class="upgrade-label">Стандарт</div>
+                                <div class="upgrade-value">Понятный набор работ и материалов без углубленной технической документации.</div>
+                            </div>
+                            <div class="upgrade-row">
+                                <div class="upgrade-label">Комфорт +</div>
+                                <div class="upgrade-value"><strong>Полный технический проект</strong> помогает заранее продумать инженерные решения и избежать лишних переделок.</div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section id="features" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title" class="section-title" data-aos="fade-up">Почему выбирают DM Stroy</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Мы разрушаем стереотипы о том, что ремонт — это долго, дорого и нервно.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="50">
+                        <div class="feature-icon">₸</div>
+                        <h3>Честная цена</h3>
+                        <p>Стоимость фиксируется в договоре и не меняется в процессе работы.</p>
+                    </div>
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="130">
+                        <div class="feature-icon">⏱</div>
+                        <h3>Точные сроки</h3>
+                        <p>Прописываем график работ. Сдаем объекты вовремя или платим неустойку.</p>
+                    </div>
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="210">
+                        <div class="feature-icon">🛡</div>
+                        <h3>Гарантия 1 год</h3>
+                        <p>Уверены в качестве материалов и работы мастеров. Официальный договор.</p>
+                    </div>
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="290">
+                        <div class="feature-icon">🧹</div>
+                        <h3>Заезжай и живи</h3>
+                        <p>Выполняем проф. клининг перед сдачей. Вам останется только завезти мебель.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Как мы работаем -->
+        <section id="process" class="packages" aria-labelledby="process-title">
+            <div class="container">
+                <h2 id="process-title" class="section-title" data-aos="fade-up">Процесс без вашего участия</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Понятные шаги от первого звонка до получения ключей от готовой квартиры.</p>
+                
+                <div class="process-grid">
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="process-num">01</div>
+                        <h3>Заявка и замер</h3>
+                        <p>Вы оставляете заявку. Наш инженер бесплатно приезжает на объект, проводит точные замеры и консультирует.</p>
+                    </div>
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="110">
+                        <div class="process-num">02</div>
+                        <h3>Выбор пакета</h3>
+                        <p>Подбираем оптимальный пакет под ваши задачи, рассчитываем финальную смету до тенге.</p>
+                    </div>
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="170">
+                        <div class="process-num">03</div>
+                        <h3>Договор</h3>
+                        <p>Подписываем официальный договор с указанием сроков, гарантий и фиксированной стоимости.</p>
+                    </div>
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="230">
+                        <div class="process-num">04</div>
+                        <h3>Закупка материалов</h3>
+                        <p>Самостоятельно закупаем и доставляем все черновые и чистовые материалы на объект.</p>
+                    </div>
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="290">
+                        <div class="process-num">05</div>
+                        <h3>Выполнение работ</h3>
+                        <p>Проводим ремонт согласно тех. регламентам. Регулярно отправляем вам фото/видео отчеты.</p>
+                    </div>
+                    <div class="process-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="process-num">06</div>
+                        <h3>Сдача и клининг</h3>
+                        <p>Убираем строительную пыль, моем окна и сдаем вам идеально чистую, готовую к проживанию квартиру.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Портфолио -->
+        <section id="portfolio" aria-labelledby="portfolio-title">
+            <div class="container">
+                <h2 id="portfolio-title" class="section-title" data-aos="fade-up">Реализованные объекты</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Посмотрите на результаты нашей работы в новостройках Астаны.</p>
+                
+                <div class="portfolio-grid">
+                    <article class="case-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="case-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Современный ремонт квартиры в новостройке Астаны с дизайнерской отделкой гостиной" loading="lazy" decoding="async">
+                        </div>
+                        <div class="case-info">
+                            <h3>ЖК "Nova City"</h3>
+                            <div class="case-tags">
+                                <span class="tag">65 м²</span>
+                                <span class="tag">Комфорт +</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: #666;">Реализован проект с магнитными треками, дверями 2.2м и теневым профилем.</p>
+                        </div>
+                    </article>
+                    <article class="case-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="case-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чистовая отделка ванной комнаты в квартире под ключ в Астане с керамогранитом" loading="lazy" decoding="async">
+                        </div>
+                        <div class="case-info">
+                            <h3>ЖК "Коркем Tower"</h3>
+                            <div class="case-tags">
+                                <span class="tag">42 м²</span>
+                                <span class="tag">Стандарт</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: #666;">Светлый минималистичный ремонт. Установлена подарочная ТВ-зона.</p>
+                        </div>
+                    </article>
+                    <article class="case-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="case-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер спальни после ремонта квартиры под ключ в Астане с премиальной отделкой" loading="lazy" decoding="async">
+                        </div>
+                        <div class="case-info">
+                            <h3>ЖК "Манхэттен"</h3>
+                            <div class="case-tags">
+                                <span class="tag">85 м²</span>
+                                <span class="tag">Комфорт +</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: #666;">Комплексная перепланировка, перенос мокрой зоны, керамогранит 120х60.</p>
+                        </div>
+                    </article>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://instagram.com/dm_stroy_" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);">Смотреть больше в Instagram</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="faq" aria-labelledby="faq-title">
+            <div class="container" style="max-width: 800px;">
+                <h2 id="faq-title" class="section-title" data-aos="fade-up">Частые вопросы</h2>
+                <br><br>
+                
+                <details data-aos="fade-up" data-aos-delay="80">
+                    <summary>В чем главная разница между Стандартом и Комфортом?</summary>
+                    <div class="faq-content">
+                        Стандарт — это надежная база. Комфорт+ — это инвестиция в статус и удобство: высокие двери (2.2м), современный трековый свет, мастер-выключатель и полная техническая документация. Все подарки из Стандарта уже включены в Комфорт+.
+                    </div>
+                </details>
+
+                <details data-aos="fade-up" data-aos-delay="120">
+                    <summary>Можно ли вносить изменения в пакеты?</summary>
+                    <div class="faq-content">
+                        Да, наши пакеты гибкие. Если вы хотите добавить дополнительную розетку, заменить обои на покраску или выбрать другую ванну — мы сделаем перерасчет индивидуально для вас.
+                    </div>
+                </details>
+                
+                <details data-aos="fade-up" data-aos-delay="180">
+                    <summary>Как происходит оплата?</summary>
+                    <div class="faq-content">
+                        Мы работаем по удобной трехэтапной системе: 40% / 40% / 20%. Первая часть оплачивается при подписании договора и закупке черновых материалов, вторая — после завершения черновых работ, и остаток — после сдачи чистового ремонта.
+                    </div>
+                </details>
+
+                <details data-aos="fade-up" data-aos-delay="240">
+                    <summary>Кто закупает материалы?</summary>
+                    <div class="faq-content">
+                        Мы берем на себя 100% комплектацию объекта. Закупку, доставку, разгрузку и подъем черновых и чистовых материалов мы осуществляем сами. Вы только утверждаете цвета и фактуры (плитка, ламинат, обои) по нашим каталогам.
+                    </div>
+                </details>
+
+                <details data-aos="fade-up" data-aos-delay="300">
+                    <summary>Вы даете гарантию на работы?</summary>
+                    <div class="faq-content">
+                        Да, по договору мы предоставляем гарантию 1 год на все виды выполненных монтажных и отделочных работ. Если в течение этого времени выявится недочет по нашей вине — мы устраним его бесплатно.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Форма заявки -->
+        <section id="contact" class="cta-section" aria-labelledby="contact-title">
+            <div class="container cta-container">
+                <div class="cta-text" data-aos="fade-right">
+                    <h2 id="contact-title">Готовы начать ремонт?</h2>
+                    <p>Оставьте заявку прямо сейчас. Наш менеджер свяжется с вами, ответит на все вопросы и организует бесплатный выезд инженера для замера вашей квартиры.</p>
+                    <ul style="list-style: none; opacity: 0.9; margin-bottom: 20px;">
+                        <li style="margin-bottom: 10px;">✓ Бесплатный замер</li>
+                        <li style="margin-bottom: 10px;">✓ Точный расчет сметы</li>
+                        <li style="margin-bottom: 10px;">✓ Консультация по материалам</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary">Выбрать «Стандарт»</a>
                 </div>
-
-                <!-- Пакет Комфорт + -->
-                <div class="package-card premium">
-                    <div class="package-badge">Хит продаж</div>
-                    <h3 class="package-name">Комфорт +</h3>
-                    <div class="package-price">130.000 ₸ <span>/ м²</span></div>
-                    <p class="package-desc">Улучшенные материалы, трендовые интерьерные решения и расширенный комфорт для вашей квартиры.</p>
-                    
-                    <ul class="package-list">
-                        <li>Техпроект помещения</li>
-                        <li>Выравнивание стен под правило, перенос мокрой зоны</li>
-                        <li>Электромонтажные работы (медная проводка)</li>
-                        <li>Сантехнические работы (черновые + чистовые)</li>
-                        <li>Керамогранит 120x60 с запилом под 45° (в т.ч. на фартук)</li>
-                        <li>Подвесной унитаз + Инсталляция Grohe</li>
-                        <li>Ванна акриловая 170x70 либо душевое ограждение с поддоном</li>
-                        <li>Зеркало с подсветкой 60-80 см, тумба с раковиной</li>
-                        <li>Смесители Frap (ванна, раковина, гиг. душ)</li>
-                        <li>Обои флизелиновые</li>
-                        <li>Двери высотой 2.2 метра</li>
-                        <li>Ламинат 33 класса с фаской (подложка включена)</li>
-                        <li>Плинтус полиуретан 10 см</li>
-                        <li>Потолок натяжной, софиты, магнитные треки до 4 п.м.</li>
-                        <li>Монтаж кондиционера (1 точка)</li>
-                        <li>Тёплый пол (2 точки)</li>
-                        <li>Мастер-выключатель, розетки/выключатели Aura, Volcon</li>
-                        <li>Профессиональный клининг</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary">Выбрать «Комфорт +»</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Преимущества -->
-    <section id="features">
-        <div class="container">
-            <h2 class="section-title">Почему выбирают DM Stroy</h2>
-            <p class="section-subtitle">Мы разрушаем стереотипы о том, что ремонт — это долго, дорого и нервно.</p>
-            
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">₸</div>
-                    <h4>Честная цена</h4>
-                    <p>Стоимость фиксируется в договоре и не меняется в процессе работы.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⏱</div>
-                    <h4>Точные сроки</h4>
-                    <p>Прописываем график работ. Сдаем объекты вовремя или платим неустойку.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🛡</div>
-                    <h4>Гарантия 1 год</h4>
-                    <p>Уверены в качестве материалов и работы мастеров. Официальный договор.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🧹</div>
-                    <h4>Заезжай и живи</h4>
-                    <p>Выполняем проф. клининг перед сдачей. Вам останется только завезти мебель.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Как мы работаем -->
-    <section id="process" class="packages">
-        <div class="container">
-            <h2 class="section-title">Процесс без вашего участия</h2>
-            <p class="section-subtitle">Понятные шаги от первого звонка до получения ключей от готовой квартиры.</p>
-            
-            <div class="process-grid">
-                <div class="process-card">
-                    <div class="process-num">01</div>
-                    <h3>Заявка и замер</h3>
-                    <p>Вы оставляете заявку. Наш инженер бесплатно приезжает на объект, проводит точные замеры и консультирует.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-num">02</div>
-                    <h3>Выбор пакета</h3>
-                    <p>Подбираем оптимальный пакет под ваши задачи, рассчитываем финальную смету до тенге.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-num">03</div>
-                    <h3>Договор</h3>
-                    <p>Подписываем официальный договор с указанием сроков, гарантий и фиксированной стоимости.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-num">04</div>
-                    <h3>Закупка материалов</h3>
-                    <p>Самостоятельно закупаем и доставляем все черновые и чистовые материалы на объект.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-num">05</div>
-                    <h3>Выполнение работ</h3>
-                    <p>Проводим ремонт согласно тех. регламентам. Регулярно отправляем вам фото/видео отчеты.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-num">06</div>
-                    <h3>Сдача и клининг</h3>
-                    <p>Убираем строительную пыль, моем окна и сдаем вам идеально чистую, готовую к проживанию квартиру.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Портфолио -->
-    <section id="portfolio">
-        <div class="container">
-            <h2 class="section-title">Реализованные объекты</h2>
-            <p class="section-subtitle">Посмотрите на результаты нашей работы в новостройках Астаны.</p>
-            
-            <div class="portfolio-grid">
-                <!-- Кейс 1 -->
-                <div class="case-card">
-                    <div class="case-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ремонт ЖК Астана">
-                    </div>
-                    <div class="case-info">
-                        <h3>ЖК "Nova City"</h3>
-                        <div class="case-tags">
-                            <span class="tag">65 м²</span>
-                            <span class="tag">Комфорт +</span>
+                
+                <div class="cta-form" data-aos="fade-left" data-aos-delay="120">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label class="visually-hidden" for="name">Ваше имя</label>
+                            <input id="name" name="name" type="text" class="form-control" placeholder="Ваше имя" autocomplete="name" required>
                         </div>
-                        <p style="font-size: 0.9rem; color: #666;">Реализован проект с магнитными треками, дверями 2.2м и теневым профилем.</p>
-                    </div>
-                </div>
-                <!-- Кейс 2 -->
-                <div class="case-card">
-                    <div class="case-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ремонт ванной Астана">
-                    </div>
-                    <div class="case-info">
-                        <h3>ЖК "Коркем Tower"</h3>
-                        <div class="case-tags">
-                            <span class="tag">42 м²</span>
-                            <span class="tag">Стандарт</span>
+                        <div class="form-group">
+                            <label class="visually-hidden" for="phone">Номер телефона</label>
+                            <input id="phone" name="phone" type="tel" class="form-control" placeholder="Номер телефона" autocomplete="tel" inputmode="tel" required>
                         </div>
-                        <p style="font-size: 0.9rem; color: #666;">Светлый минималистичный ремонт. Установлена подарочная ТВ-зона.</p>
-                    </div>
-                </div>
-                <!-- Кейс 3 -->
-                <div class="case-card">
-                    <div class="case-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ремонт спальни Астана">
-                    </div>
-                    <div class="case-info">
-                        <h3>ЖК "Манхэттен"</h3>
-                        <div class="case-tags">
-                            <span class="tag">85 м²</span>
-                            <span class="tag">Комфорт +</span>
+                        <div class="form-group">
+                            <label class="visually-hidden" for="residential-complex">Название ЖК</label>
+                            <input id="residential-complex" name="residential_complex" type="text" class="form-control" placeholder="Название ЖК (необязательно)" autocomplete="organization">
                         </div>
-                        <p style="font-size: 0.9rem; color: #666;">Комплексная перепланировка, перенос мокрой зоны, керамогранит 120х60.</p>
-                    </div>
+                        <div class="form-group">
+                            <label class="visually-hidden" for="package">Интересующий пакет</label>
+                            <select id="package" name="package" class="form-control">
+                                <option value="" disabled selected>Интересующий пакет</option>
+                                <option value="standart">Пакет «Стандарт» (105.000 ₸/м²)</option>
+                                <option value="comfort">Пакет «Комфорт +» (130.000 ₸/м²)</option>
+                                <option value="dont_know">Пока не знаю, нужна консультация</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Получить расчет стоимости</button>
+                        <p style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 15px;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                    </form>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="https://instagram.com/dm_stroy_" target="_blank" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);">Смотреть больше в Instagram</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="faq">
-        <div class="container" style="max-width: 800px;">
-            <h2 class="section-title">Частые вопросы</h2>
-            <br><br>
-            
-            <details>
-                <summary>Можно ли вносить изменения в пакеты?</summary>
-                <div class="faq-content">
-                    Да, наши пакеты гибкие. Если вы хотите добавить дополнительную розетку, заменить обои на покраску или выбрать другую ванну — мы сделаем перерасчет индивидуально для вас.
-                </div>
-            </details>
-            
-            <details>
-                <summary>Как происходит оплата?</summary>
-                <div class="faq-content">
-                    Мы работаем по удобной трехэтапной системе: 40% / 40% / 20%. Первая часть оплачивается при подписании договора и закупке черновых материалов, вторая — после завершения черновых работ, и остаток — после сдачи чистового ремонта.
-                </div>
-            </details>
-
-            <details>
-                <summary>Кто закупает материалы?</summary>
-                <div class="faq-content">
-                    Мы берем на себя 100% комплектацию объекта. Закупку, доставку, разгрузку и подъем черновых и чистовых материалов мы осуществляем сами. Вы только утверждаете цвета и фактуры (плитка, ламинат, обои) по нашим каталогам.
-                </div>
-            </details>
-
-            <details>
-                <summary>Вы даете гарантию на работы?</summary>
-                <div class="faq-content">
-                    Да, по договору мы предоставляем гарантию 1 год на все виды выполненных монтажных и отделочных работ. Если в течение этого времени выявится недочет по нашей вине — мы устраним его бесплатно.
-                </div>
-            </details>
-        </div>
-    </section>
-
-    <!-- Форма заявки -->
-    <section id="contact" class="cta-section">
-        <div class="container cta-container">
-            <div class="cta-text">
-                <h2>Готовы начать ремонт?</h2>
-                <p>Оставьте заявку прямо сейчас. Наш менеджер свяжется с вами, ответит на все вопросы и организует бесплатный выезд инженера для замера вашей квартиры.</p>
-                <ul style="list-style: none; opacity: 0.9; margin-bottom: 20px;">
-                    <li style="margin-bottom: 10px;">✓ Бесплатный замер</li>
-                    <li style="margin-bottom: 10px;">✓ Точный расчет сметы</li>
-                    <li style="margin-bottom: 10px;">✓ Консультация по материалам</li>
-                </ul>
-            </div>
-            
-            <div class="cta-form">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Номер телефона" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Название ЖК (необязательно)">
-                    </div>
-                    <div class="form-group">
-                        <select class="form-control">
-                            <option value="" disabled selected>Интересующий пакет</option>
-                            <option value="standart">Пакет «Стандарт» (105.000 ₸/м²)</option>
-                            <option value="comfort">Пакет «Комфорт +» (130.000 ₸/м²)</option>
-                            <option value="dont_know">Пока не знаю, нужна консультация</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Получить расчет стоимости</button>
-                    <p style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 15px;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
-                </form>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Футер -->
     <footer>
         <div class="container">
+            <h2 class="visually-hidden">Контактная информация и навигация DM Stroy</h2>
             <div class="footer-grid">
                 <div>
                     <div class="footer-logo">
-                        <img src="IMG_7947.jpg" alt="DM Stroy Logo" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'">
+                        <img src="IMG_7947.jpg" alt="Логотип строительной компании DM Stroy по ремонту квартир в Астане" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'">
                     </div>
                     <p style="max-width: 300px; font-size: 0.9rem;">Профессиональный ремонт квартир под ключ в Астане. Берем все заботы на себя, от замера до финального клининга.</p>
                 </div>
                 <div>
-                    <h4 class="footer-title">Навигация</h4>
-                    <ul class="footer-links">
-                        <li><a href="#packages">Пакеты</a></li>
-                        <li><a href="#process">Этапы работы</a></li>
-                        <li><a href="#portfolio">Объекты</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
+                    <h3 class="footer-title">Навигация</h3>
+                    <nav aria-label="Навигация в футере">
+                        <ul class="footer-links">
+                            <li><a href="#packages">Пакеты</a></li>
+                            <li><a href="#process">Этапы работы</a></li>
+                            <li><a href="#portfolio">Объекты</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </nav>
                 </div>
                 <div>
-                    <h4 class="footer-title">Контакты</h4>
+                    <h3 class="footer-title">Контакты</h3>
                     <ul class="footer-links">
                         <li><a href="tel:+77086472742">📞 +7 708 647 27 42</a></li>
                         <li><a href="#">📍 г. Астана</a></li>
-                        <li><a href="https://instagram.com/dm_stroy_" target="_blank">📷 @dm_stroy_</a></li>
-                        <li><a href="https://wa.me/77086472742" target="_blank">💬 WhatsApp</a></li>
+                        <li><a href="https://instagram.com/dm_stroy_" target="_blank" rel="noopener noreferrer">📷 @dm_stroy_</a></li>
+                        <li><a href="https://wa.me/77086472742" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a></li>
                     </ul>
                 </div>
             </div>
@@ -1024,6 +1459,90 @@
             </div>
         </div>
     </footer>
+
+    <!-- SEO: структурированные данные Local SEO; в production замените тестовый адрес и image на боевые значения -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "HomeAndConstructionBusiness",
+            "name": "DM Stroy",
+            "description": "Ремонт квартир под ключ в Астане с фиксированной ценой, договором и гарантией.",
+            "image": "IMG_7947.jpg",
+            "telephone": "+7 708 647 27 42",
+            "priceRange": "₸₸",
+            "areaServed": "Астана",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Тестовый адрес, 1",
+                "addressLocality": "Астана",
+                "postalCode": "010000",
+                "addressCountry": "KZ"
+            },
+            "sameAs": [
+                "https://instagram.com/dm_stroy_",
+                "https://wa.me/77086472742"
+            ]
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        const counterElements = document.querySelectorAll('[data-counter-target]');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (counterElements.length) {
+            const animateCounter = (element) => {
+                const target = Number(element.dataset.counterTarget || 0);
+                const suffix = element.dataset.counterSuffix || '';
+
+                if (prefersReducedMotion) {
+                    element.textContent = target + suffix;
+                    return;
+                }
+
+                const duration = 1600;
+                const startTime = performance.now();
+
+                const updateCounter = (currentTime) => {
+                    const progress = Math.min((currentTime - startTime) / duration, 1);
+                    const easedProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentValue = Math.floor(target * easedProgress);
+
+                    element.textContent = currentValue + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        element.textContent = target + suffix;
+                    }
+                };
+
+                requestAnimationFrame(updateCounter);
+            };
+
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            counterElements.forEach((counter) => {
+                counterObserver.observe(counter);
+            });
+        }
+    </script>
 
 </body>
 </html>
