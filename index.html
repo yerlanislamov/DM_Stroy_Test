@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,42 +13,51 @@
     <meta property="og:image" content="IMG_7947.jpg">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ru_KZ">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#213446',
+                        slate: '#6A7988',
+                        cloud: '#F4F2ED',
+                        paper: '#FBFAF7',
+                        line: '#D8DEE4',
+                        brand: '#1C354B',
+                        brandDark: '#050505',
+                        accent: '#B9853A',
+                        accentDeep: '#9E702F',
+                        accentSoft: 'rgba(185, 133, 58, 0.10)'
+                    },
+                    boxShadow: {
+                        soft: '0 18px 40px rgba(25, 39, 52, 0.08)',
+                        lift: '0 22px 50px rgba(17, 29, 41, 0.12)',
+                        insetSoft: 'inset 0 1px 0 rgba(255, 255, 255, 0.9)'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        hero: "linear-gradient(110deg, rgba(5, 5, 5, 0.88) 0%, rgba(16, 24, 33, 0.82) 42%, rgba(16, 24, 33, 0.54) 100%), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=2200&q=80')"
+                    }
+                }
+            }
+        };
+    </script>
     <style>
-        :root {
-            --primary: #1C3F60; /* Глубокий синий акцент для текста и кнопок */
-            --primary-hover: #142E46;
-            --accent: #5C95B2; /* Цвет, приближенный к синей линии на вашем логотипе */
-            --premium-accent: #C78B3B;
-            --premium-accent-soft: rgba(199, 139, 59, 0.12);
-            --text-main: #2B2B2B;
-            --text-muted: #666666;
-            --bg-light: #F8F9FA;
-            --bg-white: #FFFFFF;
-            --header-bg: #050505; /* Глубокий черный для идеального слияния с логотипом */
-            --border-color: #E2E8F0;
-            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 110px;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-main);
-            background-color: var(--bg-white);
+            scroll-padding-top: 6rem;
         }
 
         body {
-            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            color: #213446;
+            background: #f7f5f0;
             overflow-x: hidden;
         }
 
@@ -64,823 +73,323 @@
             border: 0;
         }
 
-        /* Утилиты */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 60px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 18px 36px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            transform: translateY(0);
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--bg-white);
-            box-shadow: 0 8px 20px rgba(28, 63, 96, 0.18);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 16px 28px rgba(20, 46, 70, 0.28);
-        }
-
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--bg-white);
-            border: 2px solid var(--bg-white);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--bg-white);
-            color: var(--header-bg);
-            transform: translateY(-3px);
-            box-shadow: 0 14px 24px rgba(255, 255, 255, 0.14);
-        }
-
-        .btn-outline:active {
-            transform: translateY(0);
-        }
-
-        /* Шапка (Header) - ТЕПЕРЬ ТЕМНАЯ */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: var(--header-bg); /* Черный фон */
-            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
-            z-index: 1000;
-            padding: 10px 0;
-            transition: var(--transition);
-        }
-
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            max-height: 80px; 
-            width: auto;
-            display: block; /* Убирает лишний отступ снизу */
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #E2E8F0; /* Светлый текст на черном фоне */
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .header-contacts {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .phone-link {
-            font-weight: 700;
-            color: #FFFFFF;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: var(--transition);
-        }
-
-        .phone-link:hover {
-            color: var(--accent);
-        }
-
-        /* Первый экран (Hero) - ФОН КВАРТИРЫ */
-        .hero {
-            height: 100vh;
-            min-height: 700px;
-            display: flex;
-            align-items: center;
-            /* Используем фото современного интерьера квартиры в ЖК */
-            background: linear-gradient(to right, rgba(10, 15, 25, 0.9), rgba(10, 15, 25, 0.6)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
-            background-attachment: fixed;
-            color: var(--bg-white);
-            padding-top: 80px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            max-width: 800px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-        }
-
-        /* Остальные стили остались прежними для светлого чистого контента */
-        .stats {
-            background-color: var(--bg-white);
-            padding: 60px 0;
-            margin-top: -50px;
+        .section-shell {
             position: relative;
-            z-index: 10;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            background-color: var(--bg-white);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .stat-item {
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-4px);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 5px;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .stat-text {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .packages {
-            background-color: var(--bg-light);
-        }
-
-        .packages-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: stretch;
-        }
-
-        .package-card {
-            background: var(--bg-white);
-            border-radius: 20px;
-            padding: 50px 40px;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            position: relative;
-            border: 1px solid var(--border-color);
-            transform-origin: center;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .package-card:hover {
-            box-shadow: 0 20px 32px rgba(0,0,0,0.12);
-            transform: translateY(-6px) scale(1.015);
-            border-color: var(--accent);
-        }
-
-        .package-card.premium {
-            border: 2px solid var(--premium-accent);
-            background: linear-gradient(180deg, rgba(199, 139, 59, 0.06) 0%, rgba(255, 255, 255, 1) 22%);
-        }
-
-        .package-badge {
+        .section-shell::before {
+            content: '';
             position: absolute;
-            top: -15px;
-            right: 30px;
-            background: linear-gradient(135deg, var(--premium-accent), #e2b56d);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.85rem;
+            inset: 1.5rem 0 auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(28, 53, 75, 0.08), transparent);
+            pointer-events: none;
+        }
+
+        .hero-grid::before {
+            content: '';
+            position: absolute;
+            inset: auto 4% 6% auto;
+            width: 18rem;
+            height: 18rem;
+            border-radius: 9999px;
+            background: radial-gradient(circle, rgba(185, 133, 58, 0.18) 0%, rgba(185, 133, 58, 0) 72%);
+            filter: blur(20px);
+            pointer-events: none;
+        }
+
+        .glow-button,
+        .soft-button,
+        .package-card,
+        .comparison-card,
+        .feature-card,
+        .faq-card,
+        .process-card,
+        .portfolio-frame,
+        .cta-panel {
+            transform: translate3d(0, 0, 0);
+            will-change: transform, opacity, box-shadow;
+        }
+
+        .glow-button,
+        .soft-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow-button::after,
+        .soft-button::after {
+            content: '';
+            position: absolute;
+            inset: -20% auto auto -35%;
+            width: 60%;
+            height: 160%;
+            background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%);
+            transform: translateX(-220%) skewX(-16deg);
+            transition: transform 0.7s ease;
+        }
+
+        .glow-button:hover::after,
+        .glow-button:focus-visible::after,
+        .soft-button:hover::after,
+        .soft-button:focus-visible::after {
+            transform: translateX(280%) skewX(-16deg);
+        }
+
+        .comparison-card.is-active .comparison-icon {
+            background: rgba(185, 133, 58, 0.12);
+            border-color: rgba(185, 133, 58, 0.35);
+            color: #B9853A;
+            transform: translateY(-2px);
+        }
+
+        .comparison-icon {
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .package-section-card {
+            background: linear-gradient(180deg, #fbfaf7 0%, #f8f5ef 100%);
+        }
+
+        .package-card-title {
+            letter-spacing: -0.03em;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
         }
 
-        .package-name {
-            font-size: 2rem;
+        .package-card-price {
+            letter-spacing: -0.04em;
             font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
         }
 
-        .package-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .package-price span {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .package-desc {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .package-sections {
+        .package-list {
             display: grid;
-            gap: 18px;
-            flex: 1;
+            gap: 0.95rem;
         }
 
-        .package-section {
-            padding: 20px;
-            border: 1px solid rgba(28, 63, 96, 0.08);
-            border-radius: 16px;
-            background: rgba(248, 249, 250, 0.95);
+        .package-list-item {
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
         }
 
-        .package-card.premium .package-section {
-            background: rgba(255, 255, 255, 0.92);
-            border-color: rgba(199, 139, 59, 0.18);
+        .package-list-item span:last-child {
+            color: #5f7080;
+            font-size: 1rem;
+            line-height: 1.68;
+            font-weight: 500;
+            letter-spacing: -0.01em;
         }
 
-        .package-section-heading {
+        .package-list-item strong {
+            color: #213446;
+            font-weight: 600;
+        }
+
+        .package-note-copy {
+            color: #47596b;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .comparison-shell {
+            background:
+                radial-gradient(circle at top right, rgba(185, 133, 58, 0.08), transparent 25%),
+                linear-gradient(180deg, #ffffff 0%, #f8f5ef 100%);
+        }
+
+        .comparison-card {
+            background: linear-gradient(180deg, #ffffff 0%, #fbfaf7 100%);
+            border-color: rgba(28, 53, 75, 0.1);
+        }
+
+        .comparison-track {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .comparison-panel {
+            position: relative;
+            overflow: hidden;
+            min-height: 100%;
+        }
+
+        .comparison-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 4px;
+            border-radius: 9999px;
+            background: rgba(28, 53, 75, 0.14);
+        }
+
+        .comparison-panel.standard {
+            background: linear-gradient(180deg, #ffffff 0%, #f6f4ef 100%);
+        }
+
+        .comparison-panel.comfort::before {
+            background: linear-gradient(180deg, #B9853A 0%, #d1aa74 100%);
+        }
+
+        .comparison-panel.comfort {
+            background: linear-gradient(180deg, #fffaf1 0%, #f7ecda 100%);
+            border-color: rgba(185, 133, 58, 0.22);
+        }
+
+        .comparison-panel-head {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
+            justify-content: space-between;
+            gap: 0.75rem;
         }
 
-        .package-section-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(92, 149, 178, 0.14);
-            color: var(--primary);
-            font-size: 1.15rem;
-            flex-shrink: 0;
+        .comparison-meta {
+            color: rgba(28, 53, 75, 0.44);
+            font-size: 0.72rem;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
 
-        .package-card.premium .package-section-icon {
-            background: var(--premium-accent-soft);
-            color: var(--premium-accent);
+        .comparison-copy {
+            color: #506272;
+            line-height: 1.72;
+            font-weight: 500;
+            letter-spacing: -0.01em;
         }
 
-        .package-section-title {
-            font-size: 1rem;
-            color: var(--primary);
+        .comparison-copy strong {
+            color: #1C354B;
+            font-weight: 600;
+        }
+
+        .comparison-label {
+            color: #667688;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+        }
+
+        .comparison-card-title {
+            letter-spacing: -0.025em;
             font-weight: 700;
         }
 
-        .package-section-list {
-            list-style: none;
-            display: grid;
-            gap: 10px;
+        @media (min-width: 768px) {
+            .comparison-track {
+                grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.08fr);
+            }
         }
 
-        .package-section-list li {
+        .process-shell {
+            --process-progress: 0%;
             position: relative;
-            padding-left: 22px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            padding-top: 1rem;
         }
 
-        .package-section-list li::before {
+        .process-shell::before,
+        .process-shell::after {
             content: '';
             position: absolute;
             left: 0;
-            top: 0.7em;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-            transform: translateY(-50%);
+            right: 0;
+            top: 0;
+            height: 3px;
+            border-radius: 9999px;
         }
 
-        .package-card.premium .package-section-list li::before {
-            background: var(--premium-accent);
+        .process-shell::before {
+            background: rgba(28, 53, 75, 0.12);
         }
 
-        .package-note {
-            margin-top: 26px;
-            padding: 14px 16px;
-            background: rgba(92, 149, 178, 0.08);
-            border-left: 4px solid var(--accent);
-            border-radius: 12px;
-            color: var(--text-main);
-            font-size: 0.95rem;
+        .process-shell::after {
+            width: var(--process-progress);
+            background: linear-gradient(90deg, #B9853A 0%, #1C354B 100%);
+            transition: width 0.45s ease;
         }
 
-        .package-card.premium .package-note {
-            background: var(--premium-accent-soft);
-            border-left-color: var(--premium-accent);
+        .process-card.is-visible .process-badge {
+            background: #B9853A;
+            color: #ffffff;
+            border-color: #B9853A;
+            box-shadow: 0 12px 24px rgba(185, 133, 58, 0.18);
+            transform: translateY(-2px);
         }
 
-        .package-cta {
-            margin-top: 28px;
+        .process-badge {
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .package-card .btn {
-            width: 100%;
+        .portfolio-slide {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.02);
+            transition: opacity 0.55s ease, transform 0.7s ease;
         }
 
-        .upgrade-comparison {
-            margin-top: 56px;
-            padding: 38px;
-            border-radius: 24px;
-            background: linear-gradient(180deg, rgba(28, 63, 96, 0.05) 0%, rgba(255, 255, 255, 0.9) 100%);
-            border: 1px solid rgba(28, 63, 96, 0.08);
+        .portfolio-slide.is-active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
         }
 
-        .upgrade-header {
-            text-align: center;
-            margin-bottom: 34px;
+        .portfolio-dot {
+            transition: width 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
         }
 
-        .upgrade-title {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 10px;
+        .portfolio-dot.is-active {
+            width: 2.75rem;
+            background: #B9853A;
+            opacity: 1;
         }
 
-        .upgrade-subtitle {
-            color: var(--text-muted);
-            max-width: 720px;
-            margin: 0 auto;
+        .portfolio-thumb.is-active {
+            border-color: rgba(185, 133, 58, 0.55);
+            background: rgba(255, 255, 255, 0.10);
         }
 
-        .upgrade-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
+        .portfolio-progress {
+            --portfolio-progress: 0%;
         }
 
-        .upgrade-card {
-            background: var(--bg-white);
-            border: 1px solid rgba(28, 63, 96, 0.08);
-            border-radius: 18px;
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .upgrade-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .upgrade-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-
-        .upgrade-card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            background: rgba(92, 149, 178, 0.14);
-            color: var(--primary);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .upgrade-card h3 {
-            font-size: 1.1rem;
-            color: var(--primary);
-        }
-
-        .upgrade-row {
-            display: grid;
-            grid-template-columns: 110px 1fr;
-            gap: 12px;
-            align-items: start;
-            padding: 10px 0;
-            border-top: 1px solid rgba(28, 63, 96, 0.08);
-        }
-
-        .upgrade-row:first-of-type {
-            border-top: 0;
-            padding-top: 0;
-        }
-
-        .upgrade-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
-
-        .upgrade-value {
-            color: var(--text-main);
-            font-size: 0.96rem;
-        }
-
-        .upgrade-value strong {
-            color: var(--premium-accent);
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .process-card {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 16px;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .process-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .process-num {
-            font-size: 4rem;
-            font-weight: 800;
-            color: rgba(28, 63, 96, 0.05);
+        .portfolio-progress::after {
+            content: '';
             position: absolute;
-            top: 10px;
-            right: 20px;
-            line-height: 1;
+            inset: 0 auto 0 0;
+            width: var(--portfolio-progress);
+            border-radius: inherit;
+            background: linear-gradient(90deg, #B9853A 0%, rgba(185, 133, 58, 0.45) 100%);
+            transition: width 0.3s linear;
         }
 
-        .process-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-            position: relative;
-            z-index: 1;
-        }
-
-        .process-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .portfolio {
-            background-color: var(--bg-light);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .case-card {
-            border-radius: 16px;
-            overflow: hidden;
-            background: var(--bg-white);
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .case-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 22px 34px rgba(0,0,0,0.12);
-            border-color: rgba(92, 149, 178, 0.45);
-        }
-
-        .case-img-wrap {
-            overflow: hidden;
-            height: 250px;
-        }
-
-        .case-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .case-card:hover .case-img-wrap img {
-            transform: scale(1.05);
-        }
-
-        .case-info {
-            padding: 25px;
-        }
-
-        .case-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .case-tags {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .tag {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            background: var(--bg-light);
-            padding: 5px 10px;
-            border-radius: 6px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: 16px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-6px);
-            background-color: rgba(92, 149, 178, 0.05);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(92, 149, 178, 0.1);
-            color: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .feature-item h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .feature-item p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .faq {
-            background-color: var(--bg-light);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        details {
-            background: var(--bg-white);
-            margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: var(--shadow-sm);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        details:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        summary {
-            padding: 25px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            position: relative;
+        .faq-card summary {
             list-style: none;
-            color: var(--primary);
         }
 
-        summary::-webkit-details-marker {
+        .faq-card summary::-webkit-details-marker {
             display: none;
         }
 
-        summary::after {
-            content: '+';
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            color: var(--accent);
-            transition: var(--transition);
+        .faq-card[open] .faq-plus {
+            transform: rotate(45deg);
+            color: #B9853A;
         }
 
-        details[open] summary::after {
-            content: '−';
+        .faq-plus {
+            transition: transform 0.25s ease, color 0.25s ease;
         }
 
-        .faq-content {
-            padding: 0 25px 25px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        .site-header {
+            background: rgba(5, 5, 5, 0.82);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 24px rgba(5, 5, 5, 0.08);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
-        .cta-section {
-            background-color: var(--primary);
-            color: var(--bg-white);
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 60px;
-        }
-
-        .cta-text {
-            flex: 1;
-        }
-
-        .cta-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--bg-white);
-        }
-
-        .cta-text p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-
-        .cta-form {
-            flex: 1;
-            background: var(--bg-white);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-form:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 36px rgba(0,0,0,0.16);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 16px 20px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(92, 149, 178, 0.2);
-        }
-
-        select.form-control {
-            appearance: none;
-            background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 20px center;
-            background-size: 15px;
-        }
-
-        .cta-form .btn {
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        footer {
-            background-color: #050505; /* Под цвет шапки и логотипа */
-            color: rgba(255,255,255,0.7);
-            padding: 60px 0 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 40px;
-        }
-
-        .footer-logo img {
-            max-height: 70px;
-            margin-bottom: 20px;
-        }
-
-        .footer-title {
-            color: var(--bg-white);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--bg-white);
-        }
-
-        .copyright {
-            text-align: center;
-            font-size: 0.9rem;
+        .site-header.is-scrolled {
+            background: rgba(5, 5, 5, 0.96);
+            border-bottom-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 18px 42px rgba(5, 5, 5, 0.22);
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -888,320 +397,581 @@
                 scroll-behavior: auto;
             }
 
-            * {
+            *,
+            *::before,
+            *::after {
                 animation: none !important;
                 transition: none !important;
             }
-
-            .hero {
-                background-attachment: scroll;
-            }
-        }
-
-        /* Адаптивность */
-        @media (max-width: 1024px) {
-            .packages-grid {
-                grid-template-columns: 1fr;
-                max-width: 700px;
-                margin: 0 auto;
-            }
-            .upgrade-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .hero { background-attachment: scroll; }
-            .hero h1 { font-size: 2.8rem; }
-            .cta-container { flex-direction: column; }
-        }
-
-        @media (max-width: 768px) {
-            header .nav-links, .header-contacts .btn { display: none; }
-            .hero { text-align: center; justify-content: center; padding-top: 0; }
-            .hero-buttons { justify-content: center; flex-direction: column; }
-            .hero h1 { font-size: 2.2rem; }
-            
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; }
-            .process-grid, .portfolio-grid, .features-grid { grid-template-columns: 1fr; }
-            .upgrade-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-            .footer-logo img { margin: 0 auto 20px; }
-            
-            section { padding: 60px 0; }
-            .package-card { padding: 30px 20px; }
-            .upgrade-comparison { padding: 24px 18px; }
-            .upgrade-title { font-size: 1.7rem; }
-            .upgrade-row { grid-template-columns: 1fr; gap: 6px; }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body>
-
-    <!-- Шапка - Теперь черная -->
-    <header>
-        <div class="container header-inner">
-            <div class="logo">
-                <a href="#"><img src="IMG_7947.jpg" alt="Логотип DM Stroy - ремонт квартир под ключ в Астане" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'"></a>
+<body class="bg-paper text-ink antialiased selection:bg-accent/15 selection:text-brand">
+    <header id="site-header" class="site-header fixed inset-x-0 top-0 z-50 border-b backdrop-blur-xl">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+            <div class="flex min-w-0 items-center gap-4">
+                <a href="#" class="shrink-0" aria-label="DM Stroy">
+                    <img src="IMG_7947.jpg" alt="Логотип DM Stroy - ремонт квартир под ключ в Астане" class="h-16 w-auto sm:h-20" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'">
+                </a>
             </div>
-            <nav aria-label="Основная навигация">
-                <ul class="nav-links">
-                    <li><a href="#packages">Пакеты и цены</a></li>
-                    <li><a href="#process">Как мы работаем</a></li>
-                    <li><a href="#portfolio">Наши объекты</a></li>
-                    <li><a href="#faq">Вопросы</a></li>
+
+            <nav aria-label="Основная навигация" class="hidden xl:block">
+                <ul class="flex items-center gap-8 text-sm font-semibold text-white/80">
+                    <li><a href="#packages" class="transition hover:text-white">Пакеты и цены</a></li>
+                    <li><a href="#process" class="transition hover:text-white">Этапы работы</a></li>
+                    <li><a href="#portfolio" class="transition hover:text-white">Портфолио</a></li>
+                    <li><a href="#faq" class="transition hover:text-white">Вопросы</a></li>
                 </ul>
             </nav>
-            <div class="header-contacts">
-                <a href="tel:+77086472742" class="phone-link">+7 708 647 27 42</a>
-                <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Оставить заявку</a>
+
+            <div class="hidden items-center gap-4 xl:flex">
+                <a href="tel:+77086472742" class="whitespace-nowrap text-base font-bold text-white transition hover:text-white/80">+7 708 647 27 42</a>
+                <a href="#contact" data-package-target="dont_know" class="glow-button inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-bold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-accentDeep">Оставить заявку</a>
+            </div>
+
+            <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center rounded-full border border-white/20 p-3 text-white transition hover:border-white/40 hover:bg-white/10 xl:hidden" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="visually-hidden">Открыть меню</span>
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#090909] xl:hidden">
+            <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+                <nav aria-label="Мобильная навигация">
+                    <ul class="grid gap-3 text-sm font-semibold text-white/85">
+                        <li><a href="#packages" class="block rounded-2xl border border-white/10 px-4 py-3 transition hover:bg-white/10">Пакеты и цены</a></li>
+                        <li><a href="#process" class="block rounded-2xl border border-white/10 px-4 py-3 transition hover:bg-white/10">Этапы работы</a></li>
+                        <li><a href="#portfolio" class="block rounded-2xl border border-white/10 px-4 py-3 transition hover:bg-white/10">Портфолио</a></li>
+                        <li><a href="#faq" class="block rounded-2xl border border-white/10 px-4 py-3 transition hover:bg-white/10">Вопросы</a></li>
+                    </ul>
+                </nav>
+                <div class="mt-4 grid gap-3">
+                    <a href="tel:+77086472742" class="rounded-2xl border border-white/10 px-4 py-3 text-center text-base font-bold text-white transition hover:bg-white/10">+7 708 647 27 42</a>
+                    <a href="#contact" data-package-target="dont_know" class="glow-button inline-flex items-center justify-center rounded-2xl bg-accent px-4 py-3 text-sm font-bold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-accentDeep">Оставить заявку</a>
+                </div>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Первый экран -->
-        <section class="hero">
-            <div class="container" data-aos="fade-up">
-                <h1 data-aos="fade-up" data-aos-delay="50">Идеальный ремонт квартир под ключ в Астане</h1>
-                <p data-aos="fade-up" data-aos-delay="150">Готовые решения с фиксированной ценой от 105 000 ₸/м². Прозрачный состав работ, строгий договор, официальная гарантия и результат без вашего стресса.</p>
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="250">
-                    <a href="#contact" class="btn btn-primary">Рассчитать стоимость</a>
-                    <a href="#packages" class="btn btn-outline">Сравнить пакеты</a>
+        <section class="relative overflow-hidden bg-hero bg-cover bg-center bg-no-repeat pt-32 text-white sm:pt-40">
+            <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.12),rgba(5,5,5,0.2))]"></div>
+            <div class="hero-grid relative mx-auto grid min-h-[100svh] max-w-7xl items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:px-8 lg:pb-24">
+                <div class="relative max-w-3xl">
+                    <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/85 backdrop-blur" data-aos="fade-up">
+                        <span class="h-2 w-2 rounded-full bg-accent"></span>
+                        Современный строительный подход
+                    </div>
+                    <h1 class="max-w-4xl text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl" data-aos="fade-up" data-aos-delay="50">Идеальный ремонт квартир под ключ в Астане</h1>
+                    <p class="mt-6 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl" data-aos="fade-up" data-aos-delay="120">Готовые решения с фиксированной ценой от 105 000 ₸/м². Прозрачный состав работ, строгий договор, официальная гарантия и результат без вашего стресса.</p>
+                    <div class="mt-8 flex flex-col gap-4 sm:flex-row" data-aos="fade-up" data-aos-delay="200">
+                        <a href="#contact" data-package-target="dont_know" class="glow-button inline-flex items-center justify-center rounded-full bg-accent px-7 py-4 text-sm font-bold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-accentDeep">Рассчитать стоимость</a>
+                        <a href="#packages" class="soft-button inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold text-white backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/45 hover:bg-white/10">Сравнить пакеты</a>
+                    </div>
+                </div>
+
+                <div class="relative rounded-[2rem] border border-white/10 bg-black/20 p-5 shadow-lift backdrop-blur-md" data-aos="fade-left" data-aos-delay="160">
+                    <div class="rounded-[1.75rem] border border-black/5 bg-[#f7f5ef] p-6 text-ink shadow-insetSoft">
+                        <div class="flex items-center justify-between gap-4">
+                            <div>
+                                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand/55">Инженерный контроль</p>
+                                <h2 class="mt-2 text-2xl font-extrabold text-brand">Прозрачный проект</h2>
+                            </div>
+                            <div class="flex h-14 w-14 items-center justify-center rounded-2xl border border-accent/20 bg-accentSoft text-accent">
+                                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                                    <path d="M4 20h16M6 16V8l6-4 6 4v8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9 20v-5h6v5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                            <div class="rounded-3xl border border-line bg-white px-5 py-4">
+                                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand/50">Базовая цена</p>
+                                <p class="mt-2 text-2xl font-extrabold text-brand">105 000 ₸/м²</p>
+                                <p class="mt-2 text-sm leading-6 text-slate">Готовые пакеты с понятным составом работ и материалов.</p>
+                            </div>
+                            <div class="rounded-3xl border border-line bg-white px-5 py-4">
+                                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand/50">Контроль</p>
+                                <p class="mt-2 text-2xl font-extrabold text-brand">100%</p>
+                                <p class="mt-2 text-sm leading-6 text-slate">Фиксированная смета, строгий договор и регулярные фото/видео отчеты.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 grid gap-3">
+                            <div class="flex items-start gap-3 rounded-2xl border border-line bg-white px-4 py-4">
+                                <div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-brand/8 text-brand">
+                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                        <path d="M12 3v18M3 12h18" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brand">Бесплатный замер</p>
+                                    <p class="mt-1 text-sm leading-6 text-slate">Наш инженер бесплатно приезжает на объект, проводит точные замеры и консультирует.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 rounded-2xl border border-line bg-white px-4 py-4">
+                                <div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-brand/8 text-brand">
+                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                        <path d="M5 12l4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brand">Гарантия 1 год</p>
+                                    <p class="mt-1 text-sm leading-6 text-slate">Официальный договор, понятный график работ и гарантийные обязательства.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEO/семантика: блок статистики оформлен как самостоятельная section -->
-        <section class="stats" aria-labelledby="stats-title">
-            <div class="container">
-                <h2 id="stats-title" class="visually-hidden">Преимущества компании в цифрах</h2>
-                <div class="stats-grid">
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="50">
-                        <div class="stat-number" data-counter-target="5" data-counter-suffix="">0</div>
-                        <div class="stat-text">лет опыта на рынке</div>
-                    </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="150">
-                        <div class="stat-number" data-counter-target="1000" data-counter-suffix="+">0</div>
-                        <div class="stat-text">довольных клиентов</div>
-                    </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="250">
-                        <div class="stat-number" data-counter-target="100" data-counter-suffix="%">0</div>
-                        <div class="stat-text">фиксированная смета</div>
-                    </div>
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="350">
-                        <div class="stat-number" data-counter-target="1" data-counter-suffix="">0</div>
-                        <div class="stat-text">гарантия по договору</div>
+        <section class="-mt-16 px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="rounded-[2rem] border border-line bg-white p-6 shadow-soft sm:p-8">
+                    <h2 id="stats-title" class="visually-hidden">Преимущества компании в цифрах</h2>
+                    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                        <div class="rounded-[1.5rem] border border-line bg-[#faf9f6] px-5 py-6 text-center" data-aos="fade-up" data-aos-delay="40">
+                            <div class="text-4xl font-extrabold tracking-tight text-brand sm:text-5xl" data-counter-target="5" data-counter-suffix="">0</div>
+                            <div class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate">лет опыта на рынке</div>
+                        </div>
+                        <div class="rounded-[1.5rem] border border-line bg-[#faf9f6] px-5 py-6 text-center" data-aos="fade-up" data-aos-delay="120">
+                            <div class="text-4xl font-extrabold tracking-tight text-brand sm:text-5xl" data-counter-target="1000" data-counter-suffix="+">0</div>
+                            <div class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate">довольных клиентов</div>
+                        </div>
+                        <div class="rounded-[1.5rem] border border-line bg-[#faf9f6] px-5 py-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                            <div class="text-4xl font-extrabold tracking-tight text-brand sm:text-5xl" data-counter-target="100" data-counter-suffix="%">0</div>
+                            <div class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate">фиксированная смета</div>
+                        </div>
+                        <div class="rounded-[1.5rem] border border-line bg-[#faf9f6] px-5 py-6 text-center" data-aos="fade-up" data-aos-delay="280">
+                            <div class="text-4xl font-extrabold tracking-tight text-brand sm:text-5xl" data-counter-target="1" data-counter-suffix="">0</div>
+                            <div class="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate">гарантия по договору</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Пакеты ремонта -->
-        <section id="packages" class="packages" aria-labelledby="packages-title">
-            <div class="container">
-                <h2 id="packages-title" class="section-title" data-aos="fade-up">Выберите ваш пакет ремонта</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Всё необходимое уже включено. Вы выбираете пакет, мы берем на себя черновые и чистовые работы, закупку материалов и контроль.</p>
-                
-                <div class="packages-grid">
-                    <article class="package-card" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="package-name">Стандарт</h3>
-                        <div class="package-price">105.000 ₸ <span>/ м²</span></div>
-                        <p class="package-desc">Оптимальное решение для качественной чистовой отделки. Надежные материалы и базовый комфорт.</p>
+        <section id="packages" class="section-shell px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28" aria-labelledby="packages-title">
+            <div class="mx-auto max-w-7xl">
+                <div class="mx-auto max-w-3xl text-center">
+                    <p class="text-sm font-semibold uppercase tracking-[0.28em] text-accent" data-aos="fade-up">Пакеты</p>
+                    <h2 id="packages-title" class="mt-4 text-3xl font-bold tracking-[-0.03em] text-brand sm:text-4xl" data-aos="fade-up" data-aos-delay="50">Выберите ваш пакет ремонта</h2>
+                    <p class="mt-5 text-lg leading-8 text-slate" data-aos="fade-up" data-aos-delay="110">Всё необходимое уже включено. Вы выбираете пакет, мы берем на себя черновые и чистовые работы, закупку материалов и контроль.</p>
+                </div>
 
-                        <div class="package-sections">
-                            <section class="package-section">
-                                <div class="package-section-heading">
-                                    <span class="package-section-icon" aria-hidden="true">🛠</span>
-                                    <h4 class="package-section-title">Подготовка</h4>
+                <div class="mt-14 grid gap-8 xl:grid-cols-2">
+                    <article class="package-card flex h-full flex-col rounded-[2rem] border border-line bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-lift sm:p-8" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="package-card-title text-3xl text-brand">Стандарт</h3>
+                                <div class="package-card-price mt-3 text-4xl text-ink">105.000 ₸ <span class="text-lg font-semibold text-slate">/ м²</span></div>
+                            </div>
+                            <div class="hidden rounded-3xl border border-line bg-[#faf9f6] px-4 py-3 text-right sm:block">
+                                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand/55">Пакет</p>
+                                <p class="mt-1 text-sm font-semibold text-brand">Надежная база</p>
+                            </div>
+                        </div>
+                        <p class="mt-5 border-b border-line pb-6 text-base leading-7 text-slate">Оптимальное решение для качественной чистовой отделки. Надежные материалы и базовый комфорт.</p>
+
+                        <div class="mt-6 grid flex-1 gap-4">
+                            <section class="package-section-card rounded-[1.5rem] border border-line p-5">
+                                <div class="mb-4 flex items-center gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/15 bg-accentSoft text-accent">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                            <path d="M7 21h10M12 3v18M5 8h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-[1.08rem] font-semibold tracking-[-0.01em] text-brand">Подготовка</h4>
                                 </div>
-                                <ul class="package-section-list">
-                                    <li>Выравнивание стен (гипсовая штукатурка)</li>
-                                    <li>Наливной пол</li>
-                                    <li>Черновая сантехника (ПВХ Jakko)</li>
-                                    <li>Электромонтаж (кабель ГОСТ, автоматы Schneider)</li>
+                                <ul class="package-list">
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Выравнивание стен (гипсовая штукатурка)</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Наливной пол</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Черновая сантехника (ПВХ Jakko)</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Электромонтаж (кабель ГОСТ, автоматы Schneider)</span></li>
                                 </ul>
                             </section>
 
-                            <section class="package-section">
-                                <div class="package-section-heading">
-                                    <span class="package-section-icon" aria-hidden="true">🚪</span>
-                                    <h4 class="package-section-title">Чистовая отделка</h4>
+                            <section class="package-section-card rounded-[1.5rem] border border-line p-5">
+                                <div class="mb-4 flex items-center gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/15 bg-accentSoft text-accent">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                            <path d="M5 20h14M7 20V8l5-4 5 4v12" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-[1.08rem] font-semibold tracking-[-0.01em] text-brand">Чистовая отделка</h4>
                                 </div>
-                                <ul class="package-section-list">
-                                    <li>Обои флизелиновые</li>
-                                    <li>Ламинат 32 класс (8 мм)</li>
-                                    <li>Плинтус 80 мм</li>
-                                    <li>Двери белые (2.0 м) с магнитной фурнитурой</li>
-                                    <li>Натяжной потолок</li>
+                                <ul class="package-list">
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Обои флизелиновые</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Ламинат 32 класс (8 мм)</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Плинтус 80 мм</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Двери белые (2.0 м) с магнитной фурнитурой</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Натяжной потолок</span></li>
                                 </ul>
                             </section>
 
-                            <section class="package-section">
-                                <div class="package-section-heading">
-                                    <span class="package-section-icon" aria-hidden="true">🚿</span>
-                                    <h4 class="package-section-title">Санузел</h4>
+                            <section class="package-section-card rounded-[1.5rem] border border-line p-5">
+                                <div class="mb-4 flex items-center gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/15 bg-accentSoft text-accent">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                            <path d="M7 4h10l2 6-4 10H9L5 10l2-6Z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-[1.08rem] font-semibold tracking-[-0.01em] text-brand">Санузел</h4>
                                 </div>
-                                <ul class="package-section-list">
-                                    <li>Керамогранит 120х60 / 60х60 (запил 45°)</li>
-                                    <li>Инсталляция Grohe</li>
-                                    <li>Смесители Trigor 3в1</li>
-                                    <li>Ванна 170х70 или трап</li>
+                                <ul class="package-list">
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Керамогранит 120х60 / 60х60 (запил 45°)</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Инсталляция Grohe</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Смесители Trigor 3в1</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Ванна 170х70 или трап</span></li>
                                 </ul>
                             </section>
 
-                            <section class="package-section">
-                                <div class="package-section-heading">
-                                    <span class="package-section-icon" aria-hidden="true">🎁</span>
-                                    <h4 class="package-section-title">Подарки и бонусы</h4>
+                            <section class="package-section-card rounded-[1.5rem] border border-line p-5">
+                                <div class="mb-4 flex items-center gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/15 bg-accentSoft text-accent">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                            <path d="M12 3v18M3 12h18" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-[1.08rem] font-semibold tracking-[-0.01em] text-brand">Подарки и бонусы</h4>
                                 </div>
-                                <ul class="package-section-list">
-                                    <li>Дизайн-проект + Теплый пол (2 точки)</li>
-                                    <li>ТВ-зона из декор-панелей</li>
-                                    <li>Профессиональный клининг</li>
+                                <ul class="package-list">
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Дизайн-проект + Теплый пол (2 точки)</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>ТВ-зона из декор-панелей</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Профессиональный клининг</span></li>
                                 </ul>
                             </section>
                         </div>
 
-                        <div class="package-note">Надежная база для тех, кто хочет получить аккуратный и понятный ремонт без переплаты за дополнительные опции.</div>
-                        <div class="package-cta">
-                            <a href="#contact" class="btn btn-primary">Выбрать «Стандарт»</a>
+                        <div class="package-note-copy mt-6 rounded-[1.5rem] border border-accent/20 bg-accentSoft px-5 py-4 text-sm">Надежная база для тех, кто хочет получить аккуратный и понятный ремонт без переплаты за дополнительные опции.</div>
+                        <div class="mt-6">
+                            <a href="#contact" data-package-target="standart" class="soft-button inline-flex w-full items-center justify-center rounded-full bg-brand px-6 py-4 text-sm font-bold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-[#13293c]">Выбрать «Стандарт»</a>
                         </div>
                     </article>
 
-                    <article class="package-card premium" data-aos="fade-up" data-aos-delay="220">
-                        <div class="package-badge">Top Value</div>
-                        <h3 class="package-name">Комфорт +</h3>
-                        <div class="package-price">130.000 ₸ <span>/ м²</span></div>
-                        <p class="package-desc">Улучшенные материалы, трендовые решения и расширенный функционал для вашего удобства.</p>
+                    <article class="package-card relative flex h-full flex-col rounded-[2rem] border border-accent/30 bg-[#fcfaf5] p-6 shadow-soft transition duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-lift sm:p-8" data-aos="fade-up" data-aos-delay="180">
+                        <div class="absolute right-6 top-0 -translate-y-1/2 rounded-full border border-accent/25 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-accent shadow-soft">Популярный</div>
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="package-card-title text-3xl text-brand">Комфорт +</h3>
+                                <div class="package-card-price mt-3 text-4xl text-ink">130.000 ₸ <span class="text-lg font-semibold text-slate">/ м²</span></div>
+                            </div>
+                            <div class="hidden rounded-3xl border border-accent/20 bg-white px-4 py-3 text-right sm:block">
+                                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent/70">Пакет</p>
+                                <p class="mt-1 text-sm font-semibold text-brand">Улучшенная комплектация</p>
+                            </div>
+                        </div>
+                        <p class="mt-5 border-b border-accent/20 pb-6 text-base leading-7 text-slate">Улучшенные материалы, трендовые решения и расширенный функционал для вашего удобства.</p>
 
-                        <div class="package-sections">
-                            <section class="package-section">
-                                <div class="package-section-heading">
-                                    <span class="package-section-icon" aria-hidden="true">🛠</span>
-                                    <h4 class="package-section-title">Подготовка</h4>
+                        <div class="mt-6 grid flex-1 gap-4">
+                            <section class="package-section-card rounded-[1.5rem] border border-accent/15 bg-white p-5">
+                                <div class="mb-4 flex items-center gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/15 bg-accentSoft text-accent">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                            <path d="M7 21h10M12 3v18M5 8h14" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-[1.08rem] font-semibold tracking-[-0.01em] text-brand">Подготовка</h4>
                                 </div>
-                                <ul class="package-section-list">
-                                    <li><strong>Техпроект помещения</strong></li>
-                                    <li><strong>Перенос мокрой зоны</strong></li>
-                                    <li><strong>Полный цикл инженерии</strong></li>
-                                    <li><strong>Мастер-выключатель</strong> (весь свет одной кнопкой)</li>
+                                <ul class="package-list">
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Техпроект помещения</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Перенос мокрой зоны</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Полный цикл инженерии</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Мастер-выключатель</strong> (весь свет одной кнопкой)</span></li>
                                 </ul>
                             </section>
 
-                            <section class="package-section">
-                                <div class="package-section-heading">
-                                    <span class="package-section-icon" aria-hidden="true">🚪</span>
-                                    <h4 class="package-section-title">Чистовая отделка</h4>
+                            <section class="package-section-card rounded-[1.5rem] border border-accent/15 bg-white p-5">
+                                <div class="mb-4 flex items-center gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/15 bg-accentSoft text-accent">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                            <path d="M5 20h14M7 20V8l5-4 5 4v12" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-[1.08rem] font-semibold tracking-[-0.01em] text-brand">Чистовая отделка</h4>
                                 </div>
-                                <ul class="package-section-list">
-                                    <li><strong>Премиум обои</strong></li>
-                                    <li><strong>Ламинат 33 класс с фаской</strong></li>
-                                    <li>Плинтус 100 мм</li>
-                                    <li><strong>Высокие двери (2.2 м)</strong></li>
-                                    <li>Потолок с <strong>магнитными треками</strong> (до 4 м)</li>
+                                <ul class="package-list">
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Премиум обои</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Ламинат 33 класс с фаской</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Плинтус 100 мм</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Высокие двери (2.2 м)</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Потолок с <strong>магнитными треками</strong> (до 4 м)</span></li>
                                 </ul>
                             </section>
 
-                            <section class="package-section">
-                                <div class="package-section-heading">
-                                    <span class="package-section-icon" aria-hidden="true">🚿</span>
-                                    <h4 class="package-section-title">Санузел</h4>
+                            <section class="package-section-card rounded-[1.5rem] border border-accent/15 bg-white p-5">
+                                <div class="mb-4 flex items-center gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/15 bg-accentSoft text-accent">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                            <path d="M7 4h10l2 6-4 10H9L5 10l2-6Z" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-[1.08rem] font-semibold tracking-[-0.01em] text-brand">Санузел</h4>
                                 </div>
-                                <ul class="package-section-list">
-                                    <li>Керамогранит <strong>+ фартук кухни</strong></li>
-                                    <li><strong>Подвесной унитаз</strong></li>
-                                    <li>Инсталляция Grohe</li>
-                                    <li>Смесители Frap</li>
-                                    <li><strong>Зеркало с LED-подсветкой</strong></li>
+                                <ul class="package-list">
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Керамогранит <strong>+ фартук кухни</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Подвесной унитаз</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Инсталляция Grohe</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Смесители Frap</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Зеркало с LED-подсветкой</strong></span></li>
                                 </ul>
                             </section>
 
-                            <section class="package-section">
-                                <div class="package-section-heading">
-                                    <span class="package-section-icon" aria-hidden="true">🎁</span>
-                                    <h4 class="package-section-title">Подарки и бонусы</h4>
+                            <section class="package-section-card rounded-[1.5rem] border border-accent/15 bg-white p-5">
+                                <div class="mb-4 flex items-center gap-3">
+                                    <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/15 bg-accentSoft text-accent">
+                                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                            <path d="M12 3v18M3 12h18" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-[1.08rem] font-semibold tracking-[-0.01em] text-brand">Подарки и бонусы</h4>
                                 </div>
-                                <ul class="package-section-list">
-                                    <li><strong>Все подарки пакета «Стандарт» включены</strong></li>
-                                    <li>Монтаж кондиционера (1 точка)</li>
-                                    <li>Профессиональный клининг</li>
+                                <ul class="package-list">
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span><strong>Все подарки пакета «Стандарт» включены</strong></span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Монтаж кондиционера (1 точка)</span></li>
+                                    <li class="package-list-item"><span class="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent"></span><span>Профессиональный клининг</span></li>
                                 </ul>
                             </section>
                         </div>
 
-                        <div class="package-note">Пакет для тех, кто хочет не только красивую отделку, но и более высокий статус, современную инженерию и удобство в повседневной жизни.</div>
-                        <div class="package-cta">
-                            <a href="#contact" class="btn btn-primary">Выбрать «Комфорт +»</a>
+                        <div class="package-note-copy mt-6 rounded-[1.5rem] border border-accent/20 bg-accentSoft px-5 py-4 text-sm">Пакет для тех, кто хочет не только красивую отделку, но и более высокий статус, современную инженерию и удобство в повседневной жизни.</div>
+                        <div class="mt-6">
+                            <a href="#contact" data-package-target="comfort" class="glow-button inline-flex w-full items-center justify-center rounded-full bg-accent px-6 py-4 text-sm font-bold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-accentDeep">Выбрать «Комфорт +»</a>
                         </div>
                     </article>
                 </div>
 
-                <div class="upgrade-comparison" data-aos="fade-up" data-aos-delay="140">
-                    <div class="upgrade-header">
-                        <h3 class="upgrade-title">Почему выбирают Комфорт +</h3>
-                        <p class="upgrade-subtitle">Разница не только в материалах. Пакет «Комфорт +» заметно повышает статус интерьера, удобство в быту и уровень технической проработки.</p>
+                <div class="comparison-shell mt-12 rounded-[2rem] border border-line p-6 shadow-soft sm:p-8" data-aos="fade-up" data-aos-delay="140">
+                    <div class="mx-auto max-w-3xl text-center">
+                        <h3 class="text-3xl font-bold tracking-[-0.03em] text-brand">Почему выбирают Комфорт +</h3>
+                        <p class="mt-4 text-base leading-7 text-slate">Разница не только в материалах. Пакет «Комфорт +» заметно повышает статус интерьера, удобство в быту и уровень технической проработки.</p>
                     </div>
 
-                    <div class="upgrade-grid">
-                        <article class="upgrade-card" data-aos="fade-up" data-aos-delay="160">
-                            <div class="upgrade-card-header">
-                                <span class="upgrade-card-icon" aria-hidden="true">📐</span>
-                                <h3>Статус интерьера</h3>
+                    <div id="comparison-grid" class="mt-10 grid gap-6 lg:grid-cols-2">
+                        <article class="comparison-card rounded-[1.9rem] border border-line p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift" data-aos="fade-up" data-aos-delay="160">
+                            <div class="mb-5 flex items-center gap-4">
+                                <div class="comparison-icon flex h-14 w-14 items-center justify-center rounded-2xl border border-brand/10 bg-white text-brand">
+                                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                        <path d="M4 20h16M6 16V8l6-4 6 4v8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand/40">Сравнение</p>
+                                    <h3 class="comparison-card-title mt-1 text-xl text-brand">Статус интерьера</h3>
+                                </div>
                             </div>
-                            <div class="upgrade-row">
-                                <div class="upgrade-label">Стандарт</div>
-                                <div class="upgrade-value">Белые двери <strong>2.0 м</strong> для аккуратной классической базы.</div>
-                            </div>
-                            <div class="upgrade-row">
-                                <div class="upgrade-label">Комфорт +</div>
-                                <div class="upgrade-value">Высокие двери <strong>2.2 м</strong>, которые визуально поднимают потолок и делают интерьер дороже.</div>
+                            <div class="comparison-track">
+                                <div class="comparison-panel standard rounded-[1.45rem] border border-line px-5 py-5">
+                                    <div class="comparison-panel-head">
+                                        <div class="comparison-label text-xs uppercase">Стандарт</div>
+                                        <div class="comparison-meta">База</div>
+                                    </div>
+                                    <div class="comparison-copy mt-3 text-[0.98rem]">Белые двери <strong>2.0 м</strong> для аккуратной классической базы.</div>
+                                </div>
+                                <div class="comparison-panel comfort rounded-[1.45rem] border border-accent/20 px-5 py-5">
+                                    <div class="comparison-panel-head">
+                                        <div class="comparison-label text-xs uppercase">Комфорт +</div>
+                                        <div class="comparison-meta">Премиум</div>
+                                    </div>
+                                    <div class="comparison-copy mt-3 text-[0.98rem]">Высокие двери <strong>2.2 м</strong>, которые визуально поднимают потолок и делают интерьер дороже.</div>
+                                </div>
                             </div>
                         </article>
 
-                        <article class="upgrade-card" data-aos="fade-up" data-aos-delay="220">
-                            <div class="upgrade-card-header">
-                                <span class="upgrade-card-icon" aria-hidden="true">💡</span>
-                                <h3>Технология и сценарии</h3>
+                        <article class="comparison-card rounded-[1.9rem] border border-line p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift" data-aos="fade-up" data-aos-delay="220">
+                            <div class="mb-5 flex items-center gap-4">
+                                <div class="comparison-icon flex h-14 w-14 items-center justify-center rounded-2xl border border-brand/10 bg-white text-brand">
+                                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                        <path d="M12 3v18M5 12h14" stroke-linecap="round"/>
+                                        <circle cx="12" cy="12" r="9"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand/40">Сравнение</p>
+                                    <h3 class="comparison-card-title mt-1 text-xl text-brand">Технология и сценарии</h3>
+                                </div>
                             </div>
-                            <div class="upgrade-row">
-                                <div class="upgrade-label">Стандарт</div>
-                                <div class="upgrade-value">Обычное ручное управление светом по зонам.</div>
+                            <div class="comparison-track">
+                                <div class="comparison-panel standard rounded-[1.45rem] border border-line px-5 py-5">
+                                    <div class="comparison-panel-head">
+                                        <div class="comparison-label text-xs uppercase">Стандарт</div>
+                                        <div class="comparison-meta">База</div>
+                                    </div>
+                                    <div class="comparison-copy mt-3 text-[0.98rem]">Обычное ручное управление светом по зонам.</div>
+                                </div>
+                                <div class="comparison-panel comfort rounded-[1.45rem] border border-accent/20 px-5 py-5">
+                                    <div class="comparison-panel-head">
+                                        <div class="comparison-label text-xs uppercase">Комфорт +</div>
+                                        <div class="comparison-meta">Премиум</div>
+                                    </div>
+                                    <div class="comparison-copy mt-3 text-[0.98rem]"><strong>Мастер-выключатель</strong> позволяет выключать весь свет одной кнопкой перед выходом.</div>
+                                </div>
                             </div>
-                            <div class="upgrade-row">
-                                <div class="upgrade-label">Комфорт +</div>
-                                <div class="upgrade-value"><strong>Мастер-выключатель</strong> позволяет выключать весь свет одной кнопкой перед выходом.</div>
+                        </article>
+
+                        <article class="comparison-card rounded-[1.9rem] border border-line p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift" data-aos="fade-up" data-aos-delay="280">
+                            <div class="mb-5 flex items-center gap-4">
+                                <div class="comparison-icon flex h-14 w-14 items-center justify-center rounded-2xl border border-brand/10 bg-white text-brand">
+                                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                        <path d="M4 12h6l2-5 4 10 2-5h2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand/40">Сравнение</p>
+                                    <h3 class="comparison-card-title mt-1 text-xl text-brand">Современный визуал</h3>
+                                </div>
+                            </div>
+                            <div class="comparison-track">
+                                <div class="comparison-panel standard rounded-[1.45rem] border border-line px-5 py-5">
+                                    <div class="comparison-panel-head">
+                                        <div class="comparison-label text-xs uppercase">Стандарт</div>
+                                        <div class="comparison-meta">База</div>
+                                    </div>
+                                    <div class="comparison-copy mt-3 text-[0.98rem]">Натяжной потолок со стандартными световыми решениями.</div>
+                                </div>
+                                <div class="comparison-panel comfort rounded-[1.45rem] border border-accent/20 px-5 py-5">
+                                    <div class="comparison-panel-head">
+                                        <div class="comparison-label text-xs uppercase">Комфорт +</div>
+                                        <div class="comparison-meta">Премиум</div>
+                                    </div>
+                                    <div class="comparison-copy mt-3 text-[0.98rem]"><strong>Магнитные треки</strong> создают более современный и гибкий сценарий освещения.</div>
+                                </div>
                             </div>
                         </article>
 
-                        <article class="upgrade-card" data-aos="fade-up" data-aos-delay="280">
-                            <div class="upgrade-card-header">
-                                <span class="upgrade-card-icon" aria-hidden="true">✨</span>
-                                <h3>Современный визуал</h3>
+                        <article class="comparison-card rounded-[1.9rem] border border-line p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift" data-aos="fade-up" data-aos-delay="340">
+                            <div class="mb-5 flex items-center gap-4">
+                                <div class="comparison-icon flex h-14 w-14 items-center justify-center rounded-2xl border border-brand/10 bg-white text-brand">
+                                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                        <path d="M7 4h10l2 6-4 10H9L5 10l2-6Z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand/40">Сравнение</p>
+                                    <h3 class="comparison-card-title mt-1 text-xl text-brand">Контроль и безопасность</h3>
+                                </div>
                             </div>
-                            <div class="upgrade-row">
-                                <div class="upgrade-label">Стандарт</div>
-                                <div class="upgrade-value">Натяжной потолок со стандартными световыми решениями.</div>
-                            </div>
-                            <div class="upgrade-row">
-                                <div class="upgrade-label">Комфорт +</div>
-                                <div class="upgrade-value"><strong>Магнитные треки</strong> создают более современный и гибкий сценарий освещения.</div>
+                            <div class="comparison-track">
+                                <div class="comparison-panel standard rounded-[1.45rem] border border-line px-5 py-5">
+                                    <div class="comparison-panel-head">
+                                        <div class="comparison-label text-xs uppercase">Стандарт</div>
+                                        <div class="comparison-meta">База</div>
+                                    </div>
+                                    <div class="comparison-copy mt-3 text-[0.98rem]">Понятный набор работ и материалов без углубленной технической документации.</div>
+                                </div>
+                                <div class="comparison-panel comfort rounded-[1.45rem] border border-accent/20 px-5 py-5">
+                                    <div class="comparison-panel-head">
+                                        <div class="comparison-label text-xs uppercase">Комфорт +</div>
+                                        <div class="comparison-meta">Премиум</div>
+                                    </div>
+                                    <div class="comparison-copy mt-3 text-[0.98rem]"><strong>Полный технический проект</strong> помогает заранее продумать инженерные решения и избежать лишних переделок.</div>
+                                </div>
                             </div>
                         </article>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <article class="upgrade-card" data-aos="fade-up" data-aos-delay="340">
-                            <div class="upgrade-card-header">
-                                <span class="upgrade-card-icon" aria-hidden="true">🧾</span>
-                                <h3>Контроль и безопасность</h3>
+        <section id="features" class="section-shell px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28" aria-labelledby="features-title">
+            <div class="mx-auto max-w-7xl">
+                <div class="mx-auto max-w-3xl text-center">
+                    <p class="text-sm font-bold uppercase tracking-[0.28em] text-accent" data-aos="fade-up">Преимущества</p>
+                    <h2 id="features-title" class="mt-4 text-3xl font-extrabold text-brand sm:text-4xl" data-aos="fade-up" data-aos-delay="50">Почему выбирают DM Stroy</h2>
+                    <p class="mt-5 text-lg leading-8 text-slate" data-aos="fade-up" data-aos-delay="110">Мы разрушаем стереотипы о том, что ремонт — это долго, дорого и нервно.</p>
+                </div>
+
+                <div class="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                    <article class="feature-card rounded-[1.75rem] border border-line bg-white p-6 text-center shadow-soft transition duration-300 hover:-translate-y-2 hover:shadow-lift" data-aos="fade-up" data-aos-delay="60">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl border border-accent/15 bg-accentSoft text-2xl font-extrabold text-accent">₸</div>
+                        <h3 class="mt-5 text-xl font-bold text-brand">Честная цена</h3>
+                        <p class="mt-3 text-sm leading-7 text-slate">Стоимость фиксируется в договоре и не меняется в процессе работы.</p>
+                    </article>
+                    <article class="feature-card rounded-[1.75rem] border border-line bg-white p-6 text-center shadow-soft transition duration-300 hover:-translate-y-2 hover:shadow-lift" data-aos="fade-up" data-aos-delay="140">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl border border-accent/15 bg-accentSoft text-2xl font-extrabold text-accent">⏱</div>
+                        <h3 class="mt-5 text-xl font-bold text-brand">Точные сроки</h3>
+                        <p class="mt-3 text-sm leading-7 text-slate">Прописываем график работ. Сдаем объекты вовремя или платим неустойку.</p>
+                    </article>
+                    <article class="feature-card rounded-[1.75rem] border border-line bg-white p-6 text-center shadow-soft transition duration-300 hover:-translate-y-2 hover:shadow-lift" data-aos="fade-up" data-aos-delay="220">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl border border-accent/15 bg-accentSoft text-2xl font-extrabold text-accent">🛡</div>
+                        <h3 class="mt-5 text-xl font-bold text-brand">Гарантия 1 год</h3>
+                        <p class="mt-3 text-sm leading-7 text-slate">Уверены в качестве материалов и работы мастеров. Официальный договор.</p>
+                    </article>
+                    <article class="feature-card rounded-[1.75rem] border border-line bg-white p-6 text-center shadow-soft transition duration-300 hover:-translate-y-2 hover:shadow-lift" data-aos="fade-up" data-aos-delay="300">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl border border-accent/15 bg-accentSoft text-2xl font-extrabold text-accent">🧹</div>
+                        <h3 class="mt-5 text-xl font-bold text-brand">Заезжай и живи</h3>
+                        <p class="mt-3 text-sm leading-7 text-slate">Выполняем проф. клининг перед сдачей. Вам останется только завезти мебель.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="section-shell bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28" aria-labelledby="process-title">
+            <div class="mx-auto max-w-7xl">
+                <div class="mx-auto max-w-3xl text-center">
+                    <p class="text-sm font-bold uppercase tracking-[0.28em] text-accent" data-aos="fade-up">Этапы</p>
+                    <h2 id="process-title" class="mt-4 text-3xl font-extrabold text-brand sm:text-4xl" data-aos="fade-up" data-aos-delay="50">Процесс без вашего участия</h2>
+                    <p class="mt-5 text-lg leading-8 text-slate" data-aos="fade-up" data-aos-delay="110">Понятные шаги от первого звонка до получения ключей от готовой квартиры.</p>
+                </div>
+
+                <div id="process-shell" class="process-shell mx-auto mt-14 max-w-7xl">
+                    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                        <article class="process-card rounded-[1.75rem] border border-line bg-[#faf9f6] p-6 shadow-soft" data-aos="fade-up" data-aos-delay="60">
+                            <div class="flex items-start gap-4">
+                                <div class="process-badge flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-white text-lg font-extrabold text-brand">01</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand">Заявка и замер</h3>
+                                    <p class="mt-3 text-sm leading-7 text-slate">Вы оставляете заявку. Наш инженер бесплатно приезжает на объект, проводит точные замеры и консультирует.</p>
+                                </div>
                             </div>
-                            <div class="upgrade-row">
-                                <div class="upgrade-label">Стандарт</div>
-                                <div class="upgrade-value">Понятный набор работ и материалов без углубленной технической документации.</div>
+                        </article>
+                        <article class="process-card rounded-[1.75rem] border border-line bg-[#faf9f6] p-6 shadow-soft" data-aos="fade-up" data-aos-delay="110">
+                            <div class="flex items-start gap-4">
+                                <div class="process-badge flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-white text-lg font-extrabold text-brand">02</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand">Выбор пакета</h3>
+                                    <p class="mt-3 text-sm leading-7 text-slate">Подбираем оптимальный пакет под ваши задачи, рассчитываем финальную смету до тенге.</p>
+                                </div>
                             </div>
-                            <div class="upgrade-row">
-                                <div class="upgrade-label">Комфорт +</div>
-                                <div class="upgrade-value"><strong>Полный технический проект</strong> помогает заранее продумать инженерные решения и избежать лишних переделок.</div>
+                        </article>
+                        <article class="process-card rounded-[1.75rem] border border-line bg-[#faf9f6] p-6 shadow-soft" data-aos="fade-up" data-aos-delay="160">
+                            <div class="flex items-start gap-4">
+                                <div class="process-badge flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-white text-lg font-extrabold text-brand">03</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand">Договор</h3>
+                                    <p class="mt-3 text-sm leading-7 text-slate">Подписываем официальный договор с указанием сроков, гарантий и фиксированной стоимости.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="process-card rounded-[1.75rem] border border-line bg-[#faf9f6] p-6 shadow-soft" data-aos="fade-up" data-aos-delay="210">
+                            <div class="flex items-start gap-4">
+                                <div class="process-badge flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-white text-lg font-extrabold text-brand">04</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand">Закупка материалов</h3>
+                                    <p class="mt-3 text-sm leading-7 text-slate">Самостоятельно закупаем и доставляем все черновые и чистовые материалы на объект.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="process-card rounded-[1.75rem] border border-line bg-[#faf9f6] p-6 shadow-soft" data-aos="fade-up" data-aos-delay="260">
+                            <div class="flex items-start gap-4">
+                                <div class="process-badge flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-white text-lg font-extrabold text-brand">05</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand">Выполнение работ</h3>
+                                    <p class="mt-3 text-sm leading-7 text-slate">Проводим ремонт согласно тех. регламентам. Регулярно отправляем вам фото/видео отчеты.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="process-card rounded-[1.75rem] border border-line bg-[#faf9f6] p-6 shadow-soft" data-aos="fade-up" data-aos-delay="310">
+                            <div class="flex items-start gap-4">
+                                <div class="process-badge flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-white text-lg font-extrabold text-brand">06</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-brand">Сдача и клининг</h3>
+                                    <p class="mt-3 text-sm leading-7 text-slate">Убираем строительную пыль, моем окна и сдаем вам идеально чистую, готовую к проживанию квартиру.</p>
+                                </div>
                             </div>
                         </article>
                     </div>
@@ -1209,252 +979,240 @@
             </div>
         </section>
 
-        <!-- Преимущества -->
-        <section id="features" aria-labelledby="features-title">
-            <div class="container">
-                <h2 id="features-title" class="section-title" data-aos="fade-up">Почему выбирают DM Stroy</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Мы разрушаем стереотипы о том, что ремонт — это долго, дорого и нервно.</p>
-                
-                <div class="features-grid">
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="50">
-                        <div class="feature-icon">₸</div>
-                        <h3>Честная цена</h3>
-                        <p>Стоимость фиксируется в договоре и не меняется в процессе работы.</p>
+        <section id="portfolio" class="section-shell bg-[#0e1419] px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28" aria-labelledby="portfolio-title">
+            <div class="mx-auto max-w-7xl">
+                <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                    <div class="max-w-3xl">
+                        <p class="text-sm font-bold uppercase tracking-[0.28em] text-[#c69a5a]" data-aos="fade-up">Портфолио</p>
+                        <h2 id="portfolio-title" class="mt-4 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl" data-aos="fade-up" data-aos-delay="50">Реализованные объекты</h2>
+                        <p class="mt-5 text-lg leading-8 text-white/65" data-aos="fade-up" data-aos-delay="110">Посмотрите на результаты нашей работы в новостройках Астаны.</p>
                     </div>
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="130">
-                        <div class="feature-icon">⏱</div>
-                        <h3>Точные сроки</h3>
-                        <p>Прописываем график работ. Сдаем объекты вовремя или платим неустойку.</p>
-                    </div>
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="210">
-                        <div class="feature-icon">🛡</div>
-                        <h3>Гарантия 1 год</h3>
-                        <p>Уверены в качестве материалов и работы мастеров. Официальный договор.</p>
-                    </div>
-                    <div class="feature-item" data-aos="fade-up" data-aos-delay="290">
-                        <div class="feature-icon">🧹</div>
-                        <h3>Заезжай и живи</h3>
-                        <p>Выполняем проф. клининг перед сдачей. Вам останется только завезти мебель.</p>
+                    <div class="flex items-center gap-3 self-start lg:self-auto" data-aos="fade-left" data-aos-delay="140">
+                        <button type="button" id="portfolio-prev" class="soft-button inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-white/5 text-white transition hover:border-white/30 hover:bg-white/10" aria-label="Предыдущий объект">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                <path d="m15 6-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" id="portfolio-next" class="soft-button inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-white/5 text-white transition hover:border-white/30 hover:bg-white/10" aria-label="Следующий объект">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                <path d="m9 6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Как мы работаем -->
-        <section id="process" class="packages" aria-labelledby="process-title">
-            <div class="container">
-                <h2 id="process-title" class="section-title" data-aos="fade-up">Процесс без вашего участия</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Понятные шаги от первого звонка до получения ключей от готовой квартиры.</p>
-                
-                <div class="process-grid">
-                    <div class="process-card" data-aos="fade-up" data-aos-delay="50">
-                        <div class="process-num">01</div>
-                        <h3>Заявка и замер</h3>
-                        <p>Вы оставляете заявку. Наш инженер бесплатно приезжает на объект, проводит точные замеры и консультирует.</p>
-                    </div>
-                    <div class="process-card" data-aos="fade-up" data-aos-delay="110">
-                        <div class="process-num">02</div>
-                        <h3>Выбор пакета</h3>
-                        <p>Подбираем оптимальный пакет под ваши задачи, рассчитываем финальную смету до тенге.</p>
-                    </div>
-                    <div class="process-card" data-aos="fade-up" data-aos-delay="170">
-                        <div class="process-num">03</div>
-                        <h3>Договор</h3>
-                        <p>Подписываем официальный договор с указанием сроков, гарантий и фиксированной стоимости.</p>
-                    </div>
-                    <div class="process-card" data-aos="fade-up" data-aos-delay="230">
-                        <div class="process-num">04</div>
-                        <h3>Закупка материалов</h3>
-                        <p>Самостоятельно закупаем и доставляем все черновые и чистовые материалы на объект.</p>
-                    </div>
-                    <div class="process-card" data-aos="fade-up" data-aos-delay="290">
-                        <div class="process-num">05</div>
-                        <h3>Выполнение работ</h3>
-                        <p>Проводим ремонт согласно тех. регламентам. Регулярно отправляем вам фото/видео отчеты.</p>
-                    </div>
-                    <div class="process-card" data-aos="fade-up" data-aos-delay="350">
-                        <div class="process-num">06</div>
-                        <h3>Сдача и клининг</h3>
-                        <p>Убираем строительную пыль, моем окна и сдаем вам идеально чистую, готовую к проживанию квартиру.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <div class="mt-12 grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_360px] xl:items-stretch">
+                    <div class="portfolio-frame relative min-h-[420px] overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-lift" data-aos="fade-up" data-aos-delay="120">
+                        <article class="portfolio-slide is-active absolute inset-0" data-portfolio-slide data-project-title='ЖК "Nova City"' data-project-size="65 м²" data-project-package="Комфорт +" data-project-text="Реализован проект с магнитными треками, дверями 2.2м и теневым профилем." data-project-alt="Современный ремонт квартиры в новостройке Астаны с дизайнерской отделкой гостиной">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Современный ремонт квартиры в новостройке Астаны с дизайнерской отделкой гостиной" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        </article>
+                        <article class="portfolio-slide absolute inset-0" data-portfolio-slide data-project-title='ЖК "Коркем Tower"' data-project-size="42 м²" data-project-package="Стандарт" data-project-text="Светлый минималистичный ремонт. Установлена подарочная ТВ-зона." data-project-alt="Чистовая отделка ванной комнаты в квартире под ключ в Астане с керамогранитом">
+                            <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Чистовая отделка ванной комнаты в квартире под ключ в Астане с керамогранитом" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        </article>
+                        <article class="portfolio-slide absolute inset-0" data-portfolio-slide data-project-title='ЖК "Манхэттен"' data-project-size="85 м²" data-project-package="Комфорт +" data-project-text="Комплексная перепланировка, перенос мокрой зоны, керамогранит 120х60." data-project-alt="Интерьер спальни после ремонта квартиры под ключ в Астане с премиальной отделкой">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Интерьер спальни после ремонта квартиры под ключ в Астане с премиальной отделкой" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        </article>
 
-        <!-- Портфолио -->
-        <section id="portfolio" aria-labelledby="portfolio-title">
-            <div class="container">
-                <h2 id="portfolio-title" class="section-title" data-aos="fade-up">Реализованные объекты</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Посмотрите на результаты нашей работы в новостройках Астаны.</p>
-                
-                <div class="portfolio-grid">
-                    <article class="case-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="case-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Современный ремонт квартиры в новостройке Астаны с дизайнерской отделкой гостиной" loading="lazy" decoding="async">
-                        </div>
-                        <div class="case-info">
-                            <h3>ЖК "Nova City"</h3>
-                            <div class="case-tags">
-                                <span class="tag">65 м²</span>
-                                <span class="tag">Комфорт +</span>
+                        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                            <div class="max-w-xl">
+                                <div class="flex flex-wrap gap-3">
+                                    <span id="portfolio-size" class="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-white/75">65 м²</span>
+                                    <span id="portfolio-package" class="rounded-full border border-[#c69a5a]/30 bg-[#c69a5a]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#ddb37a]">Комфорт +</span>
+                                </div>
+                                <h3 id="portfolio-current-title" class="mt-4 text-3xl font-extrabold text-white">ЖК "Nova City"</h3>
+                                <p id="portfolio-current-text" class="mt-4 max-w-xl text-sm leading-7 text-white/72">Реализован проект с магнитными треками, дверями 2.2м и теневым профилем.</p>
                             </div>
-                            <p style="font-size: 0.9rem; color: #666;">Реализован проект с магнитными треками, дверями 2.2м и теневым профилем.</p>
-                        </div>
-                    </article>
-                    <article class="case-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="case-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Чистовая отделка ванной комнаты в квартире под ключ в Астане с керамогранитом" loading="lazy" decoding="async">
-                        </div>
-                        <div class="case-info">
-                            <h3>ЖК "Коркем Tower"</h3>
-                            <div class="case-tags">
-                                <span class="tag">42 м²</span>
-                                <span class="tag">Стандарт</span>
+                            <div class="mt-6 flex items-center gap-3">
+                                <div class="portfolio-dot is-active h-1.5 rounded-full bg-[#c69a5a] opacity-100" data-portfolio-dot></div>
+                                <div class="portfolio-dot h-1.5 w-3 rounded-full bg-white/30 opacity-70" data-portfolio-dot></div>
+                                <div class="portfolio-dot h-1.5 w-3 rounded-full bg-white/30 opacity-70" data-portfolio-dot></div>
                             </div>
-                            <p style="font-size: 0.9rem; color: #666;">Светлый минималистичный ремонт. Установлена подарочная ТВ-зона.</p>
+                            <div class="portfolio-progress relative mt-5 h-1 overflow-hidden rounded-full bg-white/15"></div>
                         </div>
-                    </article>
-                    <article class="case-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="case-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Интерьер спальни после ремонта квартиры под ключ в Астане с премиальной отделкой" loading="lazy" decoding="async">
+                    </div>
+
+                    <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-lift" data-aos="fade-left" data-aos-delay="180">
+                        <div class="mb-4 border-b border-white/10 pb-4">
+                            <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/45">Выберите объект</p>
                         </div>
-                        <div class="case-info">
-                            <h3>ЖК "Манхэттен"</h3>
-                            <div class="case-tags">
-                                <span class="tag">85 м²</span>
-                                <span class="tag">Комфорт +</span>
-                            </div>
-                            <p style="font-size: 0.9rem; color: #666;">Комплексная перепланировка, перенос мокрой зоны, керамогранит 120х60.</p>
+                        <div class="grid gap-3">
+                            <button type="button" class="portfolio-thumb is-active flex items-center gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-3 text-left transition hover:border-white/20 hover:bg-white/10" data-portfolio-thumb="0">
+                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=260&amp;q=80" alt="" class="h-20 w-24 rounded-2xl object-cover" loading="lazy" decoding="async">
+                                <span>
+                                    <span class="block text-sm font-bold text-white">ЖК "Nova City"</span>
+                                    <span class="mt-1 block text-xs uppercase tracking-[0.18em] text-white/45">65 м² • Комфорт +</span>
+                                </span>
+                            </button>
+                            <button type="button" class="portfolio-thumb flex items-center gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-3 text-left transition hover:border-white/20 hover:bg-white/10" data-portfolio-thumb="1">
+                                <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=260&amp;q=80" alt="" class="h-20 w-24 rounded-2xl object-cover" loading="lazy" decoding="async">
+                                <span>
+                                    <span class="block text-sm font-bold text-white">ЖК "Коркем Tower"</span>
+                                    <span class="mt-1 block text-xs uppercase tracking-[0.18em] text-white/45">42 м² • Стандарт</span>
+                                </span>
+                            </button>
+                            <button type="button" class="portfolio-thumb flex items-center gap-4 rounded-[1.5rem] border border-white/10 bg-white/5 p-3 text-left transition hover:border-white/20 hover:bg-white/10" data-portfolio-thumb="2">
+                                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=260&amp;q=80" alt="" class="h-20 w-24 rounded-2xl object-cover" loading="lazy" decoding="async">
+                                <span>
+                                    <span class="block text-sm font-bold text-white">ЖК "Манхэттен"</span>
+                                    <span class="mt-1 block text-xs uppercase tracking-[0.18em] text-white/45">85 м² • Комфорт +</span>
+                                </span>
+                            </button>
                         </div>
-                    </article>
-                </div>
-                
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="https://instagram.com/dm_stroy_" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="color: var(--primary); border-color: var(--primary);">Смотреть больше в Instagram</a>
+
+                        <div class="mt-6">
+                            <a href="https://instagram.com/dm_stroy_" target="_blank" rel="noopener noreferrer" class="soft-button inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-4 text-sm font-bold text-white transition duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/10">Смотреть больше в Instagram</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section id="faq" class="faq" aria-labelledby="faq-title">
-            <div class="container" style="max-width: 800px;">
-                <h2 id="faq-title" class="section-title" data-aos="fade-up">Частые вопросы</h2>
-                <br><br>
-                
-                <details data-aos="fade-up" data-aos-delay="80">
-                    <summary>В чем главная разница между Стандартом и Комфортом?</summary>
-                    <div class="faq-content">
-                        Стандарт — это надежная база. Комфорт+ — это инвестиция в статус и удобство: высокие двери (2.2м), современный трековый свет, мастер-выключатель и полная техническая документация. Все подарки из Стандарта уже включены в Комфорт+.
-                    </div>
-                </details>
+        <section id="faq" class="section-shell px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28" aria-labelledby="faq-title">
+            <div class="mx-auto max-w-4xl">
+                <div class="mx-auto max-w-3xl text-center">
+                    <p class="text-sm font-bold uppercase tracking-[0.28em] text-accent" data-aos="fade-up">Вопросы</p>
+                    <h2 id="faq-title" class="mt-4 text-3xl font-extrabold text-brand sm:text-4xl" data-aos="fade-up" data-aos-delay="50">Частые вопросы</h2>
+                </div>
 
-                <details data-aos="fade-up" data-aos-delay="120">
-                    <summary>Можно ли вносить изменения в пакеты?</summary>
-                    <div class="faq-content">
-                        Да, наши пакеты гибкие. Если вы хотите добавить дополнительную розетку, заменить обои на покраску или выбрать другую ванну — мы сделаем перерасчет индивидуально для вас.
-                    </div>
-                </details>
-                
-                <details data-aos="fade-up" data-aos-delay="180">
-                    <summary>Как происходит оплата?</summary>
-                    <div class="faq-content">
-                        Мы работаем по удобной трехэтапной системе: 40% / 40% / 20%. Первая часть оплачивается при подписании договора и закупке черновых материалов, вторая — после завершения черновых работ, и остаток — после сдачи чистового ремонта.
-                    </div>
-                </details>
+                <div class="mt-12 grid gap-4">
+                    <details class="faq-card rounded-[1.5rem] border border-line bg-white shadow-soft" data-aos="fade-up" data-aos-delay="80">
+                        <summary class="flex cursor-pointer items-start justify-between gap-5 px-6 py-5 text-left text-lg font-bold text-brand">
+                            <span>В чем главная разница между Стандартом и Комфортом?</span>
+                            <span class="faq-plus text-2xl leading-none text-brand/60">+</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm leading-7 text-slate">
+                            Стандарт — это надежная база. Комфорт+ — это инвестиция в статус и удобство: высокие двери (2.2м), современный трековый свет, мастер-выключатель и полная техническая документация. Все подарки из Стандарта уже включены в Комфорт+.
+                        </div>
+                    </details>
 
-                <details data-aos="fade-up" data-aos-delay="240">
-                    <summary>Кто закупает материалы?</summary>
-                    <div class="faq-content">
-                        Мы берем на себя 100% комплектацию объекта. Закупку, доставку, разгрузку и подъем черновых и чистовых материалов мы осуществляем сами. Вы только утверждаете цвета и фактуры (плитка, ламинат, обои) по нашим каталогам.
-                    </div>
-                </details>
+                    <details class="faq-card rounded-[1.5rem] border border-line bg-white shadow-soft" data-aos="fade-up" data-aos-delay="120">
+                        <summary class="flex cursor-pointer items-start justify-between gap-5 px-6 py-5 text-left text-lg font-bold text-brand">
+                            <span>Можно ли вносить изменения в пакеты?</span>
+                            <span class="faq-plus text-2xl leading-none text-brand/60">+</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm leading-7 text-slate">
+                            Да, наши пакеты гибкие. Если вы хотите добавить дополнительную розетку, заменить обои на покраску или выбрать другую ванну — мы сделаем перерасчет индивидуально для вас.
+                        </div>
+                    </details>
 
-                <details data-aos="fade-up" data-aos-delay="300">
-                    <summary>Вы даете гарантию на работы?</summary>
-                    <div class="faq-content">
-                        Да, по договору мы предоставляем гарантию 1 год на все виды выполненных монтажных и отделочных работ. Если в течение этого времени выявится недочет по нашей вине — мы устраним его бесплатно.
-                    </div>
-                </details>
+                    <details class="faq-card rounded-[1.5rem] border border-line bg-white shadow-soft" data-aos="fade-up" data-aos-delay="180">
+                        <summary class="flex cursor-pointer items-start justify-between gap-5 px-6 py-5 text-left text-lg font-bold text-brand">
+                            <span>Как происходит оплата?</span>
+                            <span class="faq-plus text-2xl leading-none text-brand/60">+</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm leading-7 text-slate">
+                            Мы работаем по удобной трехэтапной системе: 40% / 40% / 20%. Первая часть оплачивается при подписании договора и закупке черновых материалов, вторая — после завершения черновых работ, и остаток — после сдачи чистового ремонта.
+                        </div>
+                    </details>
+
+                    <details class="faq-card rounded-[1.5rem] border border-line bg-white shadow-soft" data-aos="fade-up" data-aos-delay="240">
+                        <summary class="flex cursor-pointer items-start justify-between gap-5 px-6 py-5 text-left text-lg font-bold text-brand">
+                            <span>Кто закупает материалы?</span>
+                            <span class="faq-plus text-2xl leading-none text-brand/60">+</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm leading-7 text-slate">
+                            Мы берем на себя 100% комплектацию объекта. Закупку, доставку, разгрузку и подъем черновых и чистовых материалов мы осуществляем сами. Вы только утверждаете цвета и фактуры (плитка, ламинат, обои) по нашим каталогам.
+                        </div>
+                    </details>
+
+                    <details class="faq-card rounded-[1.5rem] border border-line bg-white shadow-soft" data-aos="fade-up" data-aos-delay="300">
+                        <summary class="flex cursor-pointer items-start justify-between gap-5 px-6 py-5 text-left text-lg font-bold text-brand">
+                            <span>Вы даете гарантию на работы?</span>
+                            <span class="faq-plus text-2xl leading-none text-brand/60">+</span>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm leading-7 text-slate">
+                            Да, по договору мы предоставляем гарантию 1 год на все виды выполненных монтажных и отделочных работ. Если в течение этого времени выявится недочет по нашей вине — мы устраним его бесплатно.
+                        </div>
+                    </details>
+                </div>
             </div>
         </section>
 
-        <!-- Форма заявки -->
-        <section id="contact" class="cta-section" aria-labelledby="contact-title">
-            <div class="container cta-container">
-                <div class="cta-text" data-aos="fade-right">
-                    <h2 id="contact-title">Готовы начать ремонт?</h2>
-                    <p>Оставьте заявку прямо сейчас. Наш менеджер свяжется с вами, ответит на все вопросы и организует бесплатный выезд инженера для замера вашей квартиры.</p>
-                    <ul style="list-style: none; opacity: 0.9; margin-bottom: 20px;">
-                        <li style="margin-bottom: 10px;">✓ Бесплатный замер</li>
-                        <li style="margin-bottom: 10px;">✓ Точный расчет сметы</li>
-                        <li style="margin-bottom: 10px;">✓ Консультация по материалам</li>
+        <section id="contact" class="relative overflow-hidden bg-brand px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28" aria-labelledby="contact-title">
+            <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent)]"></div>
+            <div class="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,480px)] lg:items-center">
+                <div data-aos="fade-right">
+                    <p class="text-sm font-bold uppercase tracking-[0.28em] text-[#e1c08e]">Заявка</p>
+                    <h2 id="contact-title" class="mt-4 text-3xl font-extrabold sm:text-4xl lg:text-5xl">Готовы начать ремонт?</h2>
+                    <p class="mt-6 max-w-2xl text-lg leading-8 text-white/85">Оставьте заявку прямо сейчас. Наш менеджер свяжется с вами, ответит на все вопросы и организует бесплатный выезд инженера для замера вашей квартиры.</p>
+                    <ul class="mt-8 grid gap-3 text-base text-white/85">
+                        <li class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4"><span class="text-[#e1c08e]">✓</span><span>Бесплатный замер</span></li>
+                        <li class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4"><span class="text-[#e1c08e]">✓</span><span>Точный расчет сметы</span></li>
+                        <li class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4"><span class="text-[#e1c08e]">✓</span><span>Консультация по материалам</span></li>
                     </ul>
                 </div>
-                
-                <div class="cta-form" data-aos="fade-left" data-aos-delay="120">
-                    <form action="#" method="POST">
-                        <div class="form-group">
+
+                <div class="cta-panel rounded-[2rem] border border-white/10 bg-[#f7f5ef] p-6 text-ink shadow-lift sm:p-8" data-aos="fade-left" data-aos-delay="120">
+                    <form action="#" method="POST" class="grid gap-4">
+                        <div>
                             <label class="visually-hidden" for="name">Ваше имя</label>
-                            <input id="name" name="name" type="text" class="form-control" placeholder="Ваше имя" autocomplete="name" required>
+                            <input id="name" name="name" type="text" class="w-full rounded-2xl border border-line bg-white px-5 py-4 text-base text-ink outline-none transition duration-300 placeholder:text-slate focus:border-accent focus:ring-4 focus:ring-accent/15" placeholder="Ваше имя" autocomplete="name" required>
                         </div>
-                        <div class="form-group">
+                        <div>
                             <label class="visually-hidden" for="phone">Номер телефона</label>
-                            <input id="phone" name="phone" type="tel" class="form-control" placeholder="Номер телефона" autocomplete="tel" inputmode="tel" required>
+                            <input id="phone" name="phone" type="tel" class="w-full rounded-2xl border border-line bg-white px-5 py-4 text-base text-ink outline-none transition duration-300 placeholder:text-slate focus:border-accent focus:ring-4 focus:ring-accent/15" placeholder="Номер телефона" autocomplete="tel" inputmode="tel" required>
                         </div>
-                        <div class="form-group">
+                        <div>
                             <label class="visually-hidden" for="residential-complex">Название ЖК</label>
-                            <input id="residential-complex" name="residential_complex" type="text" class="form-control" placeholder="Название ЖК (необязательно)" autocomplete="organization">
+                            <input id="residential-complex" name="residential_complex" type="text" class="w-full rounded-2xl border border-line bg-white px-5 py-4 text-base text-ink outline-none transition duration-300 placeholder:text-slate focus:border-accent focus:ring-4 focus:ring-accent/15" placeholder="Название ЖК (необязательно)" autocomplete="organization">
                         </div>
-                        <div class="form-group">
+                        <div class="relative">
                             <label class="visually-hidden" for="package">Интересующий пакет</label>
-                            <select id="package" name="package" class="form-control">
+                            <select id="package" name="package" class="w-full appearance-none rounded-2xl border border-line bg-white px-5 py-4 pr-14 text-base text-ink outline-none transition duration-300 focus:border-accent focus:ring-4 focus:ring-accent/15">
                                 <option value="" disabled selected>Интересующий пакет</option>
                                 <option value="standart">Пакет «Стандарт» (105.000 ₸/м²)</option>
                                 <option value="comfort">Пакет «Комфорт +» (130.000 ₸/м²)</option>
                                 <option value="dont_know">Пока не знаю, нужна консультация</option>
                             </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-5 flex items-center text-slate">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                    <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Получить расчет стоимости</button>
-                        <p style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 15px;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                        <button type="submit" class="glow-button inline-flex items-center justify-center rounded-full bg-accent px-6 py-4 text-sm font-bold text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:bg-accentDeep">Получить расчет стоимости</button>
+                        <p class="text-center text-xs leading-6 text-slate">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Футер -->
-    <footer>
-        <div class="container">
+    <footer class="bg-[#050505] px-4 py-14 text-white/70 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl">
             <h2 class="visually-hidden">Контактная информация и навигация DM Stroy</h2>
-            <div class="footer-grid">
+            <div class="grid gap-10 border-b border-white/10 pb-10 lg:grid-cols-[minmax(0,2fr)_minmax(180px,1fr)_minmax(220px,1fr)]">
                 <div>
                     <div class="footer-logo">
-                        <img src="IMG_7947.jpg" alt="Логотип строительной компании DM Stroy по ремонту квартир в Астане" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'">
+                        <img src="IMG_7947.jpg" alt="Логотип строительной компании DM Stroy по ремонту квартир в Астане" loading="lazy" decoding="async" class="h-16 w-auto sm:h-20" onerror="this.src='https://via.placeholder.com/200x70/050505/FFFFFF?text=DM+STROY'">
                     </div>
-                    <p style="max-width: 300px; font-size: 0.9rem;">Профессиональный ремонт квартир под ключ в Астане. Берем все заботы на себя, от замера до финального клининга.</p>
+                    <p class="mt-5 max-w-sm text-sm leading-7">Профессиональный ремонт квартир под ключ в Астане. Берем все заботы на себя, от замера до финального клининга.</p>
                 </div>
                 <div>
-                    <h3 class="footer-title">Навигация</h3>
-                    <nav aria-label="Навигация в футере">
-                        <ul class="footer-links">
-                            <li><a href="#packages">Пакеты</a></li>
-                            <li><a href="#process">Этапы работы</a></li>
-                            <li><a href="#portfolio">Объекты</a></li>
-                            <li><a href="#faq">FAQ</a></li>
+                    <h3 class="text-lg font-bold text-white">Навигация</h3>
+                    <nav aria-label="Навигация в футере" class="mt-5">
+                        <ul class="grid gap-3 text-sm">
+                            <li><a href="#packages" class="transition hover:text-white">Пакеты</a></li>
+                            <li><a href="#process" class="transition hover:text-white">Этапы работы</a></li>
+                            <li><a href="#portfolio" class="transition hover:text-white">Портфолио</a></li>
+                            <li><a href="#faq" class="transition hover:text-white">Вопросы</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div>
-                    <h3 class="footer-title">Контакты</h3>
-                    <ul class="footer-links">
-                        <li><a href="tel:+77086472742">📞 +7 708 647 27 42</a></li>
-                        <li><a href="#">📍 г. Астана</a></li>
-                        <li><a href="https://instagram.com/dm_stroy_" target="_blank" rel="noopener noreferrer">📷 @dm_stroy_</a></li>
-                        <li><a href="https://wa.me/77086472742" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a></li>
+                    <h3 class="text-lg font-bold text-white">Контакты</h3>
+                    <ul class="mt-5 grid gap-3 text-sm">
+                        <li><a href="tel:+77086472742" class="transition hover:text-white">📞 +7 708 647 27 42</a></li>
+                        <li><a href="#" class="transition hover:text-white">📍 г. Астана</a></li>
+                        <li><a href="https://instagram.com/dm_stroy_" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">📷 @dm_stroy_</a></li>
+                        <li><a href="https://wa.me/77086472742" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">💬 WhatsApp</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
+            <div class="pt-6 text-center text-sm">
                 &copy; 2023 DM Stroy. Все права защищены. Разработано для строительной компании.
             </div>
         </div>
@@ -1486,14 +1244,64 @@
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
         AOS.init({
-            duration: 800,
+            duration: prefersReducedMotion ? 0 : 700,
             once: true,
-            offset: 100
+            offset: 80,
+            easing: 'ease-out-cubic'
         });
 
+        const siteHeader = document.getElementById('site-header');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+        const packageSelect = document.getElementById('package');
+        const packageLinks = document.querySelectorAll('[data-package-target]');
+
+        const syncHeaderState = () => {
+            if (!siteHeader) {
+                return;
+            }
+
+            siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
+        };
+
+        syncHeaderState();
+        window.addEventListener('scroll', syncHeaderState, { passive: true });
+
+        if (packageSelect && packageLinks.length) {
+            packageLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    const targetValue = link.dataset.packageTarget;
+
+                    if (!targetValue) {
+                        return;
+                    }
+
+                    packageSelect.value = targetValue;
+                    packageSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                });
+            });
+        }
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileMenuLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
         const counterElements = document.querySelectorAll('[data-counter-target]');
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         if (counterElements.length) {
             const animateCounter = (element) => {
@@ -1535,14 +1343,180 @@
                     observer.unobserve(entry.target);
                 });
             }, {
-                threshold: 0.5
+                threshold: 0.55
             });
 
-            counterElements.forEach((counter) => {
-                counterObserver.observe(counter);
+            counterElements.forEach((counter) => counterObserver.observe(counter));
+        }
+
+        const comparisonCards = document.querySelectorAll('.comparison-card');
+        const comparisonGrid = document.getElementById('comparison-grid');
+
+        if (comparisonGrid && comparisonCards.length) {
+            const activateComparisonCards = () => {
+                comparisonCards.forEach((card, index) => {
+                    window.setTimeout(() => {
+                        card.classList.add('is-active');
+                    }, prefersReducedMotion ? 0 : index * 110);
+                });
+            };
+
+            const comparisonObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    activateComparisonCards();
+                    observer.disconnect();
+                });
+            }, {
+                threshold: 0.3
             });
+
+            comparisonObserver.observe(comparisonGrid);
+        }
+
+        const processShell = document.getElementById('process-shell');
+        const processCards = processShell ? Array.from(processShell.querySelectorAll('.process-card')) : [];
+
+        if (processShell && processCards.length) {
+            const updateProcessProgress = () => {
+                const rect = processShell.getBoundingClientRect();
+                const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+                const start = viewportHeight * 0.82;
+                const total = rect.height + viewportHeight * 0.25;
+                const rawProgress = (start - rect.top) / total;
+                const progress = Math.max(0, Math.min(100, rawProgress * 100));
+                processShell.style.setProperty('--process-progress', progress + '%');
+            };
+
+            const processObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    entry.target.classList.toggle('is-visible', entry.isIntersecting);
+                });
+            }, {
+                threshold: 0.4
+            });
+
+            processCards.forEach((card) => processObserver.observe(card));
+
+            if (prefersReducedMotion) {
+                processCards.forEach((card) => card.classList.add('is-visible'));
+                processShell.style.setProperty('--process-progress', '100%');
+            } else {
+                updateProcessProgress();
+                window.addEventListener('scroll', updateProcessProgress, { passive: true });
+                window.addEventListener('resize', updateProcessProgress);
+            }
+        }
+
+        const portfolioSlides = Array.from(document.querySelectorAll('[data-portfolio-slide]'));
+        const portfolioThumbs = Array.from(document.querySelectorAll('[data-portfolio-thumb]'));
+        const portfolioDots = Array.from(document.querySelectorAll('[data-portfolio-dot]'));
+        const portfolioTitle = document.getElementById('portfolio-current-title');
+        const portfolioText = document.getElementById('portfolio-current-text');
+        const portfolioSize = document.getElementById('portfolio-size');
+        const portfolioPackage = document.getElementById('portfolio-package');
+        const portfolioPrev = document.getElementById('portfolio-prev');
+        const portfolioNext = document.getElementById('portfolio-next');
+        const portfolioProgress = document.querySelector('.portfolio-progress');
+        let portfolioIndex = 0;
+        let portfolioTimerId = null;
+        let portfolioProgressTimerId = null;
+
+        const syncPortfolio = (index) => {
+            portfolioIndex = (index + portfolioSlides.length) % portfolioSlides.length;
+
+            portfolioSlides.forEach((slide, slideIndex) => {
+                slide.classList.toggle('is-active', slideIndex === portfolioIndex);
+            });
+
+            portfolioThumbs.forEach((thumb, thumbIndex) => {
+                thumb.classList.toggle('is-active', thumbIndex === portfolioIndex);
+            });
+
+            portfolioDots.forEach((dot, dotIndex) => {
+                dot.classList.toggle('is-active', dotIndex === portfolioIndex);
+            });
+
+            const currentSlide = portfolioSlides[portfolioIndex];
+            if (!currentSlide) {
+                return;
+            }
+
+            portfolioTitle.textContent = currentSlide.dataset.projectTitle || '';
+            portfolioText.textContent = currentSlide.dataset.projectText || '';
+            portfolioSize.textContent = currentSlide.dataset.projectSize || '';
+            portfolioPackage.textContent = currentSlide.dataset.projectPackage || '';
+        };
+
+        const resetPortfolioProgress = () => {
+            if (!portfolioProgress || prefersReducedMotion) {
+                return;
+            }
+
+            portfolioProgress.style.setProperty('--portfolio-progress', '0%');
+            const duration = 5600;
+            const startTime = performance.now();
+
+            if (portfolioProgressTimerId) {
+                cancelAnimationFrame(portfolioProgressTimerId);
+            }
+
+            const animateProgress = (currentTime) => {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                portfolioProgress.style.setProperty('--portfolio-progress', (progress * 100) + '%');
+
+                if (progress < 1) {
+                    portfolioProgressTimerId = requestAnimationFrame(animateProgress);
+                }
+            };
+
+            portfolioProgressTimerId = requestAnimationFrame(animateProgress);
+        };
+
+        const startPortfolioAutoplay = () => {
+            if (prefersReducedMotion || portfolioSlides.length < 2) {
+                return;
+            }
+
+            if (portfolioTimerId) {
+                clearInterval(portfolioTimerId);
+            }
+
+            resetPortfolioProgress();
+            portfolioTimerId = window.setInterval(() => {
+                syncPortfolio(portfolioIndex + 1);
+                resetPortfolioProgress();
+            }, 5600);
+        };
+
+        if (portfolioSlides.length) {
+            syncPortfolio(0);
+            startPortfolioAutoplay();
+
+            portfolioThumbs.forEach((thumb, index) => {
+                thumb.addEventListener('click', () => {
+                    syncPortfolio(index);
+                    startPortfolioAutoplay();
+                });
+            });
+
+            if (portfolioPrev) {
+                portfolioPrev.addEventListener('click', () => {
+                    syncPortfolio(portfolioIndex - 1);
+                    startPortfolioAutoplay();
+                });
+            }
+
+            if (portfolioNext) {
+                portfolioNext.addEventListener('click', () => {
+                    syncPortfolio(portfolioIndex + 1);
+                    startPortfolioAutoplay();
+                });
+            }
         }
     </script>
-
 </body>
 </html>
